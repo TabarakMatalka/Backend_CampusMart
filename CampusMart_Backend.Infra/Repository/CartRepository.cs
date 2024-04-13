@@ -13,7 +13,7 @@ namespace CampusMart_Backend.Infra.Repository
 {
     public class CartRepository : ICartRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public CartRepository(IDbContext _dbContext)
         {

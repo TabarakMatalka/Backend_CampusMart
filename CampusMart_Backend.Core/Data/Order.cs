@@ -8,6 +8,8 @@ namespace CampusMart_Backend.Core.Data
         public Order()
         {
             Carts = new HashSet<Cart>();
+            MerchandiseReviews = new HashSet<MerchandiseReview>();
+            StoreReviews = new HashSet<StoreReview>();
         }
 
         public decimal Orderid { get; set; }
@@ -15,15 +17,19 @@ namespace CampusMart_Backend.Core.Data
         public string? Orderstatus { get; set; }
         public decimal? Totalamount { get; set; }
         public string? Location { get; set; }
+        public string? LocationLatitude { get; set; }
+        public string? LocationLongitude { get; set; }
         public string? Deliveryaddress { get; set; }
         public DateTime? Orderdate { get; set; }
-        public decimal Consumerid { get; set; }
-        public decimal Providerid { get; set; }
-        public decimal Paymentid { get; set; }
+        public decimal? Consumerid { get; set; }
+        public decimal? Providerid { get; set; }
+        public decimal? Paymentid { get; set; }
 
-        public virtual Campusconsumer Consumer { get; set; } = null!;
-        public virtual Payment Payment { get; set; } = null!;
-        public virtual Campusserviceprovider Provider { get; set; } = null!;
+        public virtual Campusconsumer? Consumer { get; set; }
+        public virtual Payment? Payment { get; set; }
+        public virtual Campusserviceprovider? Provider { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<MerchandiseReview> MerchandiseReviews { get; set; }
+        public virtual ICollection<StoreReview> StoreReviews { get; set; }
     }
 }

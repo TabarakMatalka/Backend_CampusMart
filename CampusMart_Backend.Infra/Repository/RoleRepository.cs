@@ -23,15 +23,15 @@ namespace CampusMart_Backend.Infra.Repository
 
         public List<Role> GetAllRoles()
         {
-            IEnumerable<Role> result = dbContext.Connection.Query<Role>("Role_Package.GetAllRoles", commandType: CommandType.StoredProcedure);
+            IEnumerable<Role> result = dbContext.Connection.Query<Role>("Roles_Package.GetAllRoles", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
-        public Role GetRoleByID(int id)
+        public Role GetRoleById(int id)
         {
             var p = new DynamicParameters();
-            p.Add("role_id", id, DbType.Int32, ParameterDirection.Input);
-            var result = dbContext.Connection.Query<Role>("Role_Package.GetRoleById", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_id", id, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.Query<Role>("Roles_Package.GetRoleById", p, commandType: CommandType.StoredProcedure);
 
             return result.FirstOrDefault();
         }
@@ -39,23 +39,23 @@ namespace CampusMart_Backend.Infra.Repository
         public void CreateRole(Role role)
         {
             var p = new DynamicParameters();
-            p.Add("role_name_param", role.Rolename, DbType.String, ParameterDirection.Input);
-            dbContext.Connection.Execute("Role_Package.CreateRole", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_RoleName", role.RoleName, DbType.String, ParameterDirection.Input);
+            dbContext.Connection.Execute("Roles_Package.Create_Role", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateRole(Role role)
         {
             var p = new DynamicParameters();
-            p.Add("role_id_param", role.Roleid, DbType.Int32, ParameterDirection.Input);
-            p.Add("role_name_param", role.Rolename, DbType.String, ParameterDirection.Input);
-            dbContext.Connection.Execute("Role_Package.UpdateRole", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_ID", role.RoleId, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_RoleName", role.RoleName, DbType.String, ParameterDirection.Input);
+            dbContext.Connection.Execute("Roles_Package.Update_Role", p, commandType: CommandType.StoredProcedure);
         }
 
         public void DeleteRole(int id)
         {
             var p = new DynamicParameters();
-            p.Add("role_id_param", id, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Role_Package.DeleteRole", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_id", id, DbType.Int32, ParameterDirection.Input);
+            dbContext.Connection.Execute("Roles_Package.DeleteRole", p, commandType: CommandType.StoredProcedure);
         }
     }
 }

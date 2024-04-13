@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IMerchandiseReviewService
     {
-        List<MerchandiseReview> GetAllMerchandiseReviews();
+       List<MerchandiseReview> GetAllMerchandiseReviews();
         MerchandiseReview GetMerchandiseReviewById(int merchandiseReviewId);
         void CreateMerchandiseReview(MerchandiseReview merchandiseReview);
         void UpdateMerchandiseReview(MerchandiseReview merchandiseReview);

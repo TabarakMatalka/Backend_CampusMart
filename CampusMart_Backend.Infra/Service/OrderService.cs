@@ -12,9 +12,9 @@ namespace CampusMart_Backend.Infra.Service
 
     public class OrderService : IOrderService
     {
-        private readonly IOrderRepository orderRepository;
+        private readonly IOrdersRepository orderRepository;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrdersRepository orderRepository)
         {
             this.orderRepository = orderRepository;
         }
@@ -36,7 +36,7 @@ namespace CampusMart_Backend.Infra.Service
 
         public Order GetOrderByID(int orderID)
         {
-            return this.orderRepository.GetOrderByID(orderID);
+            return this.orderRepository.GetOrderById(orderID);
         }
 
         public void UpdateOrder(Order order)

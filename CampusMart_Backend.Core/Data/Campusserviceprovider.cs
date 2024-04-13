@@ -14,9 +14,11 @@ namespace CampusMart_Backend.Core.Data
 
         public decimal Providerid { get; set; }
         public string? Phone { get; set; }
-        public decimal Userid { get; set; }
+        public string? LocationLatitude { get; set; }
+        public string? LocationLongitude { get; set; }
+        public decimal? Userid { get; set; }
 
-        public virtual Generaluser User { get; set; } = null!;
+        public virtual Generaluser? User { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Specialrequest> Specialrequests { get; set; }
         public virtual ICollection<Store> Stores { get; set; }

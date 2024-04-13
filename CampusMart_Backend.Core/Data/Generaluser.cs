@@ -13,14 +13,14 @@ namespace CampusMart_Backend.Core.Data
 
         public decimal Userid { get; set; }
         public string? Fullname { get; set; }
-        public string Email { get; set; } = null!;
+        public string? Email { get; set; }
         public string? Imagepath { get; set; }
         public string? Phone { get; set; }
         public string? Status { get; set; }
-        public string Password { get; set; } = null!;
-        public decimal Roleid { get; set; }
+        public string? Password { get; set; }
+        public decimal? Roleid { get; set; }
 
-        public virtual Role Role { get; set; } = null!;
+        public virtual Role? Role { get; set; }
         public virtual ICollection<Campusconsumer> Campusconsumers { get; set; }
         public virtual ICollection<Campusserviceprovider> Campusserviceproviders { get; set; }
     }

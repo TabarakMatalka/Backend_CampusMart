@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CampusMart_Backend.API.Controllers
 {
-    [Route("api/[controller]")]
+   [Route("api/[controller]")]
     [ApiController]
     public class BankController : ControllerBase
     {

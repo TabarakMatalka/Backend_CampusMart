@@ -35,7 +35,7 @@ namespace CampusMart_Backend.Infra.Service
 
         public Role GetRoleByID(int id)
         {
-            return this.roleRepository.GetRoleByID(id);
+            return this.roleRepository.GetRoleById( id);
         }
 
         public void UpdateRole(Role role)

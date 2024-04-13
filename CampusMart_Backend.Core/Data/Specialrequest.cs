@@ -9,10 +9,10 @@ namespace CampusMart_Backend.Core.Data
         public string? Requesttitle { get; set; }
         public string? Requestdetails { get; set; }
         public string? Requeststatus { get; set; }
-        public decimal Consumerid { get; set; }
-        public decimal Providerid { get; set; }
+        public decimal? Consumerid { get; set; }
+        public decimal? Providerid { get; set; }
 
-        public virtual Campusconsumer Consumer { get; set; } = null!;
-        public virtual Campusserviceprovider Provider { get; set; } = null!;
+        public virtual Campusconsumer? Consumer { get; set; }
+        public virtual Campusserviceprovider? Provider { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IBankService
     {
-        List<Bank> GetAllBanks();
+       List<Bank> GetAllBanks();
         Bank GetBankById(int bankId);
         void CreateBank(Bank bank);
         void UpdateBank(Bank bank);

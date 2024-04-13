@@ -9,11 +9,10 @@ namespace CampusMart_Backend.Core.Repository
 {
     public interface IGeneralUserRepository
     {
-        List<Generaluser> GetAllUsers();
-        Generaluser GetUserById(int id);
-        void CreateUser(Generaluser user);
-        void UpdateUser(Generaluser user);
-        void DeleteUser(int id);
+         List<Generaluser> GetAllUsers();
+         Generaluser GetUserById(int id);
+         void CreateUser(Generaluser user);
+         void UpdateUser(Generaluser user);
+         void DeleteUser(int id);
     }
 }
-

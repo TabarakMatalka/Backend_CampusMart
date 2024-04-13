@@ -12,8 +12,10 @@ namespace CampusMart_Backend.Core.Data
         public string? Cardnumber { get; set; }
         public decimal? Balance { get; set; }
         public string? Cvv { get; set; }
-        public decimal Paymentid { get; set; }
+        public decimal? Paymentid { get; set; }
+        public decimal? Consumerid { get; set; }
 
-        public virtual Payment Payment { get; set; } = null!;
+        public virtual Campusconsumer? Consumer { get; set; }
+        public virtual Payment? Payment { get; set; }
     }
 }

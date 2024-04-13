@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-        private readonly IRoleService roleService;
+       private readonly IRoleService roleService;
 
         public RoleController(IRoleService roleService)
         {

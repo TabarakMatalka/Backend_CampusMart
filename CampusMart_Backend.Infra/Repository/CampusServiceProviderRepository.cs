@@ -19,6 +19,7 @@ namespace CampusMart_Backend.Infra.Repository
         {
             this.dbContext = _dbContext;
         }
+
         public List<Campusserviceprovider> GetAllServiceProviders()
         {
             IEnumerable<Campusserviceprovider> result = dbContext.Connection.Query<Campusserviceprovider>("CampusServiceProvider_Package.GetAllServiceProviders", commandType: CommandType.StoredProcedure);
@@ -28,33 +29,36 @@ namespace CampusMart_Backend.Infra.Repository
         public Campusserviceprovider GetServiceProviderById(int providerId)
         {
             var p = new DynamicParameters();
-            p.Add("provider_id_param", providerId, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ProviderID", providerId, DbType.Int32, ParameterDirection.Input);
             var result = dbContext.Connection.QueryFirstOrDefault<Campusserviceprovider>("CampusServiceProvider_Package.GetServiceProviderById", p, commandType: CommandType.StoredProcedure);
-
             return result;
         }
 
-        public void CreateServiceProvider(Campusserviceprovider provider)
+        public void CreateServiceProvider(Campusserviceprovider serviceProvider)
         {
             var p = new DynamicParameters();
-            p.Add("phone_param", provider.Phone, DbType.String, ParameterDirection.Input);
-            p.Add("user_id_param", provider.Userid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_Phone", serviceProvider.Phone, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LATITUDE", serviceProvider.LocationLatitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LONGITUDE", serviceProvider.LocationLongitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_UserID", serviceProvider.Userid, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("CampusServiceProvider_Package.CreateServiceProvider", p, commandType: CommandType.StoredProcedure);
         }
 
-        public void UpdateServiceProvider(Campusserviceprovider provider)
+        public void UpdateServiceProvider(Campusserviceprovider serviceProvider)
         {
             var p = new DynamicParameters();
-            p.Add("provider_id_param", provider.Providerid, DbType.Int32, ParameterDirection.Input);
-            p.Add("phone_param", provider.Phone, DbType.String, ParameterDirection.Input);
-            p.Add("user_id_param", provider.Userid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ProviderID", serviceProvider.Providerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_Phone", serviceProvider.Phone, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LATITUDE", serviceProvider.LocationLatitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LONGITUDE", serviceProvider.LocationLongitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_UserID", serviceProvider.Userid, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("CampusServiceProvider_Package.UpdateServiceProvider", p, commandType: CommandType.StoredProcedure);
         }
 
         public void DeleteServiceProvider(int providerId)
         {
             var p = new DynamicParameters();
-            p.Add("provider_id_param", providerId, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ProviderID", providerId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("CampusServiceProvider_Package.DeleteServiceProvider", p, commandType: CommandType.StoredProcedure);
         }
     }

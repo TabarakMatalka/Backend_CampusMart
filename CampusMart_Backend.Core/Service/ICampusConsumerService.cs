@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface ICampusConsumerService
     {
-        List<Campusconsumer> GetAllConsumers();
+       List<Campusconsumer> GetAllConsumers();
         Campusconsumer GetConsumerById(int consumerId);
         void CreateConsumer(Campusconsumer consumer);
         void UpdateConsumer(Campusconsumer consumer);

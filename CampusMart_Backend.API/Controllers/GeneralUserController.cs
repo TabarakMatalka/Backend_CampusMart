@@ -11,9 +11,9 @@ namespace CampusMart_Backend.API.Controllers
     {
         private readonly IGeneralUserService generalUserService;
 
-        public GeneralUserController(IGeneralUserService generalUserService)
+        public GeneralUserController(IGeneralUserService _generalUserService)
         {
-            this.generalUserService = generalUserService;
+            this.generalUserService = _generalUserService;
         }
 
         [HttpGet]
@@ -34,14 +34,14 @@ namespace CampusMart_Backend.API.Controllers
         [Route("CreateUser")]
         public void CreateUser(Generaluser user)
         {
-            generalUserService.CreateUser(user);
+            this.generalUserService.CreateUser(user);
         }
 
         [HttpPut]
         [Route("UpdateUser")]
         public void UpdateUser(Generaluser user)
         {
-            generalUserService.UpdateUser(user);
+            this.generalUserService.UpdateUser(user);
         }
 
         [HttpDelete]

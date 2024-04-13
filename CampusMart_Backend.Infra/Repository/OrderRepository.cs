@@ -11,67 +11,73 @@ using System.Threading.Tasks;
 
 namespace CampusMart_Backend.Infra.Repository
 {
-    public class OrderRepository : IOrderRepository
+    public class OrdersRepository : IOrdersRepository
     {
         private readonly IDbContext dbContext;
 
-        public OrderRepository(IDbContext _dbContext)
+        public OrdersRepository(IDbContext _dbContext)
         {
             this.dbContext = _dbContext;
         }
 
         public List<Order> GetAllOrders()
         {
-            IEnumerable<Order> result = dbContext.Connection.Query<Order>("Order_Package.GetAllOrders", commandType: CommandType.StoredProcedure);
+            IEnumerable<Order> result = dbContext.Connection.Query<Order>("Orders_Package.GetAllOrders", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
-        public Order GetOrderByID(int orderID)
+        public Order GetOrderById(int orderId)
         {
             var p = new DynamicParameters();
-            p.Add("order_OrderID", orderID, DbType.Int32, ParameterDirection.Input);
-            var result = dbContext.Connection.QueryFirstOrDefault<Order>("Order_Package.GetOrderByID", p, commandType: CommandType.StoredProcedure);
-
+            p.Add("p_OrderID", orderId, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.QueryFirstOrDefault<Order>("Orders_Package.GetOrderById", p, commandType: CommandType.StoredProcedure);
             return result;
         }
 
         public void CreateOrder(Order order)
         {
             var p = new DynamicParameters();
-            p.Add("order_OrderNumber", order.Ordernumber, DbType.String, ParameterDirection.Input);
-            p.Add("order_OrderStatus", order.Orderstatus, DbType.String, ParameterDirection.Input);
-            p.Add("order_TotalAmount", order.Totalamount, DbType.Decimal, ParameterDirection.Input);
-            p.Add("order_Location", order.Location, DbType.String, ParameterDirection.Input);
-            p.Add("order_DeliveryAddress", order.Deliveryaddress, DbType.String, ParameterDirection.Input);
-            p.Add("order_OrderDate", order.Orderdate, DbType.DateTime, ParameterDirection.Input);
-            p.Add("order_ConsumerID", order.Consumerid, DbType.Int32, ParameterDirection.Input);
-            p.Add("order_ProviderID", order.Providerid, DbType.Int32, ParameterDirection.Input);
-            p.Add("order_PaymentID", order.Paymentid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Order_Package.Create_Order", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_OrderNumber", order.Ordernumber, DbType.String, ParameterDirection.Input);
+            p.Add("p_OrderStatus", order.Orderstatus, DbType.String, ParameterDirection.Input);
+            p.Add("p_TotalAmount", order.Totalamount, DbType.Decimal, ParameterDirection.Input);
+            p.Add("p_Location", order.Location, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LATITUDE", order.LocationLatitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LONGITUDE", order.LocationLongitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_DeliveryAddress", order.Deliveryaddress, DbType.String, ParameterDirection.Input);
+            p.Add("p_OrderDate", order.Orderdate, DbType.DateTime, ParameterDirection.Input);
+            p.Add("p_ConsumerID", order.Consumerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ProviderID", order.Providerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_PaymentID", order.Paymentid, DbType.Int32, ParameterDirection.Input);
+
+            dbContext.Connection.Execute("Orders_Package.CreateOrder", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateOrder(Order order)
         {
             var p = new DynamicParameters();
-            p.Add("order_OrderID", order.Orderid, DbType.Int32, ParameterDirection.Input);
-            p.Add("order_OrderNumber", order.Ordernumber, DbType.String, ParameterDirection.Input);
-            p.Add("order_OrderStatus", order.Orderstatus, DbType.String, ParameterDirection.Input);
-            p.Add("order_TotalAmount", order.Totalamount, DbType.Decimal, ParameterDirection.Input);
-            p.Add("order_Location", order.Location, DbType.String, ParameterDirection.Input);
-            p.Add("order_DeliveryAddress", order.Deliveryaddress, DbType.String, ParameterDirection.Input);
-            p.Add("order_OrderDate", order.Orderdate, DbType.DateTime, ParameterDirection.Input);
-            p.Add("order_ConsumerID", order.Consumerid, DbType.Int32, ParameterDirection.Input);
-            p.Add("order_ProviderID", order.Providerid, DbType.Int32, ParameterDirection.Input);
-            p.Add("order_PaymentID", order.Paymentid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Order_Package.Update_Order", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_OrderID", order.Orderid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_OrderNumber", order.Ordernumber, DbType.String, ParameterDirection.Input);
+            p.Add("p_OrderStatus", order.Orderstatus, DbType.String, ParameterDirection.Input);
+            p.Add("p_TotalAmount", order.Totalamount, DbType.Decimal, ParameterDirection.Input);
+            p.Add("p_Location", order.Location, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LATITUDE", order.LocationLatitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LONGITUDE", order.LocationLongitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_DeliveryAddress", order.Deliveryaddress, DbType.String, ParameterDirection.Input);
+            p.Add("p_OrderDate", order.Orderdate, DbType.DateTime, ParameterDirection.Input);
+            p.Add("p_ConsumerID", order.Consumerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ProviderID", order.Providerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_PaymentID", order.Paymentid, DbType.Int32, ParameterDirection.Input);
+
+            dbContext.Connection.Execute("Orders_Package.UpdateOrder", p, commandType: CommandType.StoredProcedure);
         }
 
-        public void DeleteOrder(int orderID)
+        public void DeleteOrder(int orderId)
         {
             var p = new DynamicParameters();
-            p.Add("order_OrderID", orderID, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Order_Package.DeleteOrder", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_OrderID", orderId, DbType.Int32, ParameterDirection.Input);
+            dbContext.Connection.Execute("Orders_Package.DeleteOrder", p, commandType: CommandType.StoredProcedure);
         }
     }
+
 
 }

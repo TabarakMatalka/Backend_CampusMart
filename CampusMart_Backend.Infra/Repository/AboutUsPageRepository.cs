@@ -13,7 +13,7 @@ namespace CampusMart_Backend.Infra.Repository
 {
     public class AboutUsPageRepository : IAboutUsPageRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public AboutUsPageRepository(IDbContext _dbContext)
         {

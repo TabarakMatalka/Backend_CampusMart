@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface ITestimonialPageService
     {
-        List<Testimonialpage> GetAllTestimonialPages();
+       List<Testimonialpage> GetAllTestimonialPages();
         Testimonialpage GetTestimonialPageById(int testimonialPageId);
         void CreateTestimonialPage(Testimonialpage testimonialPage);
         void UpdateTestimonialPage(Testimonialpage testimonialPage);

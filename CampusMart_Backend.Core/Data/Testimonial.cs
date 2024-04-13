@@ -9,8 +9,8 @@ namespace CampusMart_Backend.Core.Data
         public string? Testimonialtext { get; set; }
         public string? Status { get; set; }
         public DateTime? Dateposted { get; set; }
-        public decimal Consumerid { get; set; }
+        public decimal? Consumerid { get; set; }
 
-        public virtual Campusconsumer Consumer { get; set; } = null!;
+        public virtual Campusconsumer? Consumer { get; set; }
     }
 }

@@ -42,13 +42,13 @@ namespace CampusMart_Backend.Core.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=xe)));User Id=C##CampusMart;Password=CampusMart;");
+                optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=xe)));User Id=C##CampusMartDB;Password=CampusMartDB;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("C##CAMPUSMART")
+            modelBuilder.HasDefaultSchema("C##CAMPUSMARTDB")
                 .UseCollation("USING_NLS_COMP");
 
             modelBuilder.Entity<Aboutuspage>(entity =>
@@ -133,6 +133,10 @@ namespace CampusMart_Backend.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("CARDNUMBER");
 
+                entity.Property(e => e.Consumerid)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("CONSUMERID");
+
                 entity.Property(e => e.Cvv)
                     .HasMaxLength(3)
                     .IsUnicode(false)
@@ -152,17 +156,22 @@ namespace CampusMart_Backend.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("USERNAME");
 
+                entity.HasOne(d => d.Consumer)
+                    .WithMany(p => p.Banks)
+                    .HasForeignKey(d => d.Consumerid)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_BANK_CONSUMERID");
+
                 entity.HasOne(d => d.Payment)
                     .WithMany(p => p.Banks)
                     .HasForeignKey(d => d.Paymentid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C009070");
+                    .HasConstraintName("FK_BANK_PAYMENTID");
             });
 
             modelBuilder.Entity<Campusconsumer>(entity =>
             {
-                entity.HasKey(e => e.Consumerid)
-                    .HasName("SYS_C009013");
+                entity.HasKey(e => e.Consumerid);
 
                 entity.ToTable("CAMPUSCONSUMER");
 
@@ -172,9 +181,19 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnName("CONSUMERID");
 
                 entity.Property(e => e.Isprovider)
-                    .HasPrecision(1)
+                    .HasColumnType("NUMBER")
                     .HasColumnName("ISPROVIDER")
                     .HasDefaultValueSql("0");
+
+                entity.Property(e => e.LocationLatitude)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("LOCATION_LATITUDE");
+
+                entity.Property(e => e.LocationLongitude)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("LOCATION_LONGITUDE");
 
                 entity.Property(e => e.Phone)
                     .HasMaxLength(20)
@@ -189,13 +208,12 @@ namespace CampusMart_Backend.Core.Data
                     .WithMany(p => p.Campusconsumers)
                     .HasForeignKey(d => d.Userid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C009014");
+                    .HasConstraintName("FK_USERID_CONSUMER");
             });
 
             modelBuilder.Entity<Campusserviceprovider>(entity =>
             {
-                entity.HasKey(e => e.Providerid)
-                    .HasName("SYS_C009017");
+                entity.HasKey(e => e.Providerid);
 
                 entity.ToTable("CAMPUSSERVICEPROVIDER");
 
@@ -203,6 +221,16 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnType("NUMBER")
                     .ValueGeneratedOnAdd()
                     .HasColumnName("PROVIDERID");
+
+                entity.Property(e => e.LocationLatitude)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("LOCATION_LATITUDE");
+
+                entity.Property(e => e.LocationLongitude)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("LOCATION_LONGITUDE");
 
                 entity.Property(e => e.Phone)
                     .HasMaxLength(20)
@@ -217,7 +245,7 @@ namespace CampusMart_Backend.Core.Data
                     .WithMany(p => p.Campusserviceproviders)
                     .HasForeignKey(d => d.Userid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C009018");
+                    .HasConstraintName("FK_USERID_PROVIDER");
             });
 
             modelBuilder.Entity<Cart>(entity =>
@@ -252,22 +280,26 @@ namespace CampusMart_Backend.Core.Data
                 entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.Consumerid)
-                    .HasConstraintName("SYS_C009063");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_CART_CONSUMERID");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.Orderid)
-                    .HasConstraintName("SYS_C009065");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_CART_ORDERID");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.Productid)
-                    .HasConstraintName("SYS_C009064");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_CART_PRODUCTID");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.Storeid)
-                    .HasConstraintName("SYS_C009066");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_CART_STOREID");
             });
 
             modelBuilder.Entity<Contactu>(entity =>
@@ -375,8 +407,7 @@ namespace CampusMart_Backend.Core.Data
 
             modelBuilder.Entity<Generaluser>(entity =>
             {
-                entity.HasKey(e => e.Userid)
-                    .HasName("SYS_C009009");
+                entity.HasKey(e => e.Userid);
 
                 entity.ToTable("GENERALUSER");
 
@@ -423,7 +454,7 @@ namespace CampusMart_Backend.Core.Data
                     .WithMany(p => p.Generalusers)
                     .HasForeignKey(d => d.Roleid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C009010");
+                    .HasConstraintName("FK_ROLEID");
             });
 
             modelBuilder.Entity<Homepage>(entity =>
@@ -525,19 +556,19 @@ namespace CampusMart_Backend.Core.Data
                 entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Logins)
                     .HasForeignKey(d => d.Consumerid)
-                    .HasConstraintName("FK_CONSUMER");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_LOGIN_CONSUMERID");
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Logins)
                     .HasForeignKey(d => d.Roleid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("FK_ROLE");
+                    .HasConstraintName("FK_LOGIN_ROLEID");
             });
 
             modelBuilder.Entity<Merchandise>(entity =>
             {
-                entity.HasKey(e => e.Productid)
-                    .HasName("SYS_C009045");
+                entity.HasKey(e => e.Productid);
 
                 entity.ToTable("MERCHANDISE");
 
@@ -575,7 +606,7 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnName("QUANTITY");
 
                 entity.Property(e => e.Rate)
-                    .HasColumnType("NUMBER(2,1)")
+                    .HasColumnType("FLOAT")
                     .HasColumnName("RATE");
 
                 entity.Property(e => e.Storeid)
@@ -585,23 +616,22 @@ namespace CampusMart_Backend.Core.Data
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Merchandises)
                     .HasForeignKey(d => d.Storeid)
-                    .HasConstraintName("SYS_C009046");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_MERCHANDISE_STOREID");
             });
 
             modelBuilder.Entity<MerchandiseReview>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("MERCHANDISE_REVIEW");
-
-                entity.Property(e => e.Consumerid)
-                    .HasColumnType("NUMBER")
-                    .HasColumnName("CONSUMERID");
 
                 entity.Property(e => e.MerchandiseReviewId)
                     .HasColumnType("NUMBER(38)")
                     .ValueGeneratedOnAdd()
                     .HasColumnName("MERCHANDISE_REVIEW_ID");
+
+                entity.Property(e => e.Consumerid)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("CONSUMERID");
 
                 entity.Property(e => e.Orderid)
                     .HasColumnType("NUMBER")
@@ -624,19 +654,22 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnName("REVIEW_TEXT");
 
                 entity.HasOne(d => d.Consumer)
-                    .WithMany()
+                    .WithMany(p => p.MerchandiseReviews)
                     .HasForeignKey(d => d.Consumerid)
-                    .HasConstraintName("SYS_C009082");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_MERCHANDISE_REVIEW_CONSUMERID");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany()
+                    .WithMany(p => p.MerchandiseReviews)
                     .HasForeignKey(d => d.Orderid)
-                    .HasConstraintName("SYS_C009084");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_MERCHANDISE_REVIEW_ORDERID");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.MerchandiseReviews)
                     .HasForeignKey(d => d.Productid)
-                    .HasConstraintName("SYS_C009083");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_MERCHANDISE_REVIEW_PRODUCTID");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -661,6 +694,16 @@ namespace CampusMart_Backend.Core.Data
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("LOCATION");
+
+                entity.Property(e => e.LocationLatitude)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("LOCATION_LATITUDE");
+
+                entity.Property(e => e.LocationLongitude)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("LOCATION_LONGITUDE");
 
                 entity.Property(e => e.Orderdate)
                     .HasColumnType("DATE")
@@ -691,18 +734,20 @@ namespace CampusMart_Backend.Core.Data
                 entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Consumerid)
-                    .HasConstraintName("SYS_C009054");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_ORDERS_CONSUMERID");
 
                 entity.HasOne(d => d.Payment)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Paymentid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C009056");
+                    .HasConstraintName("FK_ORDERS_PAYMENTID");
 
                 entity.HasOne(d => d.Provider)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Providerid)
-                    .HasConstraintName("SYS_C009055");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_ORDERS_PROVIDERID");
             });
 
             modelBuilder.Entity<Payment>(entity =>
@@ -730,23 +775,23 @@ namespace CampusMart_Backend.Core.Data
 
             modelBuilder.Entity<Role>(entity =>
             {
-                entity.ToTable("ROLE");
+                entity.ToTable("ROLES");
 
-                entity.Property(e => e.Roleid)
-                    .HasColumnType("NUMBER")
+                entity.Property(e => e.RoleId)
+                    .HasColumnType("NUMBER(38)")
                     .ValueGeneratedOnAdd()
-                    .HasColumnName("ROLEID");
+                    .HasColumnName("ROLE_ID");
 
-                entity.Property(e => e.Rolename)
+                entity.Property(e => e.RoleName)
                     .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("ROLENAME");
+                    .HasColumnName("ROLE_NAME");
             });
 
             modelBuilder.Entity<Specialrequest>(entity =>
             {
                 entity.HasKey(e => e.Requestid)
-                    .HasName("SYS_C009022");
+                    .HasName("PK_SPECIALREQUEST_REQUESTID");
 
                 entity.ToTable("SPECIALREQUEST");
 
@@ -781,13 +826,14 @@ namespace CampusMart_Backend.Core.Data
                 entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Specialrequests)
                     .HasForeignKey(d => d.Consumerid)
-                    .HasConstraintName("SYS_C009023");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_SPECIALREQUEST_CONSUMERID");
 
                 entity.HasOne(d => d.Provider)
                     .WithMany(p => p.Specialrequests)
                     .HasForeignKey(d => d.Providerid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C009024");
+                    .HasConstraintName("FK_SPECIALREQUEST_PROVIDERID");
             });
 
             modelBuilder.Entity<Store>(entity =>
@@ -810,7 +856,7 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnName("IMAGE");
 
                 entity.Property(e => e.Isopen)
-                    .HasPrecision(1)
+                    .HasColumnType("NUMBER")
                     .HasColumnName("ISOPEN")
                     .HasDefaultValueSql("1");
 
@@ -819,7 +865,7 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnName("PROVIDERID");
 
                 entity.Property(e => e.Rate)
-                    .HasColumnType("NUMBER(2,1)")
+                    .HasColumnType("FLOAT")
                     .HasColumnName("RATE");
 
                 entity.Property(e => e.Storename)
@@ -830,14 +876,18 @@ namespace CampusMart_Backend.Core.Data
                 entity.HasOne(d => d.Provider)
                     .WithMany(p => p.Stores)
                     .HasForeignKey(d => d.Providerid)
-                    .HasConstraintName("SYS_C009042");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_STORE_PROVIDERID");
             });
 
             modelBuilder.Entity<StoreReview>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("STORE_REVIEW");
+
+                entity.Property(e => e.StoreReviewId)
+                    .HasColumnType("NUMBER(38)")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("STORE_REVIEW_ID");
 
                 entity.Property(e => e.Consumerid)
                     .HasColumnType("NUMBER")
@@ -859,29 +909,27 @@ namespace CampusMart_Backend.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("REVIEW_TEXT");
 
-                entity.Property(e => e.StoreReviewId)
-                    .HasColumnType("NUMBER(38)")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("STORE_REVIEW_ID");
-
                 entity.Property(e => e.Storeid)
                     .HasColumnType("NUMBER")
                     .HasColumnName("STOREID");
 
                 entity.HasOne(d => d.Consumer)
-                    .WithMany()
+                    .WithMany(p => p.StoreReviews)
                     .HasForeignKey(d => d.Consumerid)
-                    .HasConstraintName("SYS_C009075");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_STORE_REVIEW_CONSUMERID");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany()
+                    .WithMany(p => p.StoreReviews)
                     .HasForeignKey(d => d.Orderid)
-                    .HasConstraintName("SYS_C009077");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_STORE_REVIEW_ORDERID");
 
                 entity.HasOne(d => d.Store)
-                    .WithMany()
+                    .WithMany(p => p.StoreReviews)
                     .HasForeignKey(d => d.Storeid)
-                    .HasConstraintName("SYS_C009076");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_STORE_REVIEW_STOREID");
             });
 
             modelBuilder.Entity<Testimonial>(entity =>
@@ -915,7 +963,8 @@ namespace CampusMart_Backend.Core.Data
                 entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Testimonials)
                     .HasForeignKey(d => d.Consumerid)
-                    .HasConstraintName("SYS_C009038");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_TESTIMONIAL_CONSUMERID");
             });
 
             modelBuilder.Entity<Testimonialpage>(entity =>

@@ -14,7 +14,7 @@ namespace CampusMart_Backend.Infra.Repository
 
     public class GeneralUserRepository : IGeneralUserRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public GeneralUserRepository(IDbContext _dbContext)
         {

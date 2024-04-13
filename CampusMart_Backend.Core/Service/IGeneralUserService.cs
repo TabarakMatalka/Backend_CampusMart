@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IGeneralUserService
     {
-        List<Generaluser> GetAllUsers();
+       List<Generaluser> GetAllUsers();
         Generaluser GetUserById(int id);
         void CreateUser(Generaluser user);
         void UpdateUser(Generaluser user);

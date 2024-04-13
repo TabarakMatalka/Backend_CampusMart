@@ -1,5 +1,6 @@
 ﻿using CampusMart_Backend.Core.Common;
 using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
 using System;
@@ -30,41 +31,43 @@ namespace CampusMart_Backend.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("BankID_param", bankId, DbType.Int32, ParameterDirection.Input);
-            var result = dbContext.Connection.QueryFirstOrDefault<Bank>("Bank_Package.GetBankByID", p, commandType: CommandType.StoredProcedure);
+            var result = dbContext.Connection.QueryFirstOrDefault<Bank>("Bank_Package.GetBankById", p, commandType: CommandType.StoredProcedure);
             return result;
         }
 
         public void CreateBank(Bank bank)
         {
             var p = new DynamicParameters();
-            p.Add("username_param", bank.Username, DbType.String, ParameterDirection.Input);
-            p.Add("password_param", bank.Password, DbType.String, ParameterDirection.Input);
-            p.Add("CardHolder_param", bank.Cardholder, DbType.String, ParameterDirection.Input);
-            p.Add("CardNumber_param", bank.Cardnumber, DbType.String, ParameterDirection.Input);
-            p.Add("balance_param", bank.Balance, DbType.Decimal, ParameterDirection.Input);
-            p.Add("CVV_param", bank.Cvv, DbType.String, ParameterDirection.Input);
-            p.Add("PaymentID_param", bank.Paymentid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Bank_Package.Create_Bank", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_Username", bank.Username, DbType.String, ParameterDirection.Input);
+            p.Add("p_Password", bank.Password, DbType.String, ParameterDirection.Input);
+            p.Add("p_CardHolder", bank.Cardholder, DbType.String, ParameterDirection.Input);
+            p.Add("p_CardNumber", bank.Cardnumber, DbType.String, ParameterDirection.Input);
+            p.Add("p_Balance", bank.Balance, DbType.Decimal, ParameterDirection.Input);
+            p.Add("p_CVV", bank.Cvv, DbType.String, ParameterDirection.Input);
+            p.Add("p_PaymentID", bank.Paymentid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ConsumerID", bank.Consumerid, DbType.Int32, ParameterDirection.Input);
+            dbContext.Connection.Execute("Bank_Package.CreateBank", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateBank(Bank bank)
         {
             var p = new DynamicParameters();
-            p.Add("BankID_param", bank.Bankid, DbType.Int32, ParameterDirection.Input);
-            p.Add("username_param", bank.Username, DbType.String, ParameterDirection.Input);
-            p.Add("password_param", bank.Password, DbType.String, ParameterDirection.Input);
-            p.Add("CardHolder_param", bank.Cardholder, DbType.String, ParameterDirection.Input);
-            p.Add("CardNumber_param", bank.Cardnumber, DbType.String, ParameterDirection.Input);
-            p.Add("balance_param", bank.Balance, DbType.Decimal, ParameterDirection.Input);
-            p.Add("CVV_param", bank.Cvv, DbType.String, ParameterDirection.Input);
-            p.Add("PaymentID_param", bank.Paymentid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Bank_Package.Update_Bank", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_BankID", bank.Bankid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_Username", bank.Username, DbType.String, ParameterDirection.Input);
+            p.Add("p_Password", bank.Password, DbType.String, ParameterDirection.Input);
+            p.Add("p_CardHolder", bank.Cardholder, DbType.String, ParameterDirection.Input);
+            p.Add("p_CardNumber", bank.Cardnumber, DbType.String, ParameterDirection.Input);
+            p.Add("p_Balance", bank.Balance, DbType.Decimal, ParameterDirection.Input);
+            p.Add("p_CVV", bank.Cvv, DbType.String, ParameterDirection.Input);
+            p.Add("p_PaymentID", bank.Paymentid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ConsumerID", bank.Consumerid, DbType.Int32, ParameterDirection.Input);
+            dbContext.Connection.Execute("Bank_Package.UpdateBank", p, commandType: CommandType.StoredProcedure);
         }
 
         public void DeleteBank(int bankId)
         {
             var p = new DynamicParameters();
-            p.Add("BankID_param", bankId, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_BankID", bankId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Bank_Package.DeleteBank", p, commandType: CommandType.StoredProcedure);
         }
     }
