@@ -7,14 +7,14 @@ namespace CampusMart_Backend.Core.Data
     {
         public Role()
         {
-            Generalusers = new HashSet<Generaluser>();
+            Campusconsumers = new HashSet<Campusconsumer>();
             Logins = new HashSet<Login>();
         }
 
         public decimal RoleId { get; set; }
         public string? RoleName { get; set; }
 
-        public virtual ICollection<Generaluser> Generalusers { get; set; }
+        public virtual ICollection<Campusconsumer> Campusconsumers { get; set; }
         public virtual ICollection<Login> Logins { get; set; }
     }
 }

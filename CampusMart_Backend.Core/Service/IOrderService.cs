@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IOrderService
     {
-        List<Order> GetAllOrders();
+       List<Order> GetAllOrders();
         Order GetOrderByID(int orderID);
         void CreateOrder(Order order);
         void UpdateOrder(Order order);

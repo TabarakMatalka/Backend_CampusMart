@@ -15,7 +15,7 @@ namespace CampusMart_Backend.Infra.Repository
 
     public class TestimonialRepository : ITestimonialRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public TestimonialRepository(IDbContext _dbContext)
         {

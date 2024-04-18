@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface ICampusServiceProviderService
     {
-        List<Campusserviceprovider> GetAllServiceProviders();
+       List<Campusserviceprovider> GetAllServiceProviders();
         Campusserviceprovider GetServiceProviderById(int providerId);
         void CreateServiceProvider(Campusserviceprovider provider);
         void UpdateServiceProvider(Campusserviceprovider provider);

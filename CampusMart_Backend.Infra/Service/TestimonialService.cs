@@ -11,7 +11,7 @@ namespace CampusMart_Backend.Infra.Service
 {
     public class TestimonialService : ITestimonialService
     {
-        private readonly ITestimonialRepository testimonialRepository;
+       private readonly ITestimonialRepository testimonialRepository;
 
         public TestimonialService(ITestimonialRepository testimonialRepository)
         {

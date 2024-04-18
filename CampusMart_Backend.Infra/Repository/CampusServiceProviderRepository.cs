@@ -40,7 +40,7 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("p_Phone", serviceProvider.Phone, DbType.String, ParameterDirection.Input);
             p.Add("p_LOCATION_LATITUDE", serviceProvider.LocationLatitude, DbType.String, ParameterDirection.Input);
             p.Add("p_LOCATION_LONGITUDE", serviceProvider.LocationLongitude, DbType.String, ParameterDirection.Input);
-            p.Add("p_UserID", serviceProvider.Userid, DbType.Int32, ParameterDirection.Input);
+            p.Add("c_ConsumerID", serviceProvider.Consumerid, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("CampusServiceProvider_Package.CreateServiceProvider", p, commandType: CommandType.StoredProcedure);
         }
 
@@ -51,7 +51,7 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("p_Phone", serviceProvider.Phone, DbType.String, ParameterDirection.Input);
             p.Add("p_LOCATION_LATITUDE", serviceProvider.LocationLatitude, DbType.String, ParameterDirection.Input);
             p.Add("p_LOCATION_LONGITUDE", serviceProvider.LocationLongitude, DbType.String, ParameterDirection.Input);
-            p.Add("p_UserID", serviceProvider.Userid, DbType.Int32, ParameterDirection.Input);
+            p.Add("c_ConsumerID", serviceProvider.Consumerid, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("CampusServiceProvider_Package.UpdateServiceProvider", p, commandType: CommandType.StoredProcedure);
         }
 

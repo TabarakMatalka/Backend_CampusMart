@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class StoreReviewController : ControllerBase
     {
-        private readonly IStoreReviewService storeReviewService;
+       private readonly IStoreReviewService storeReviewService;
 
         public StoreReviewController(IStoreReviewService storeReviewService)
         {

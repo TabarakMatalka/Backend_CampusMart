@@ -11,7 +11,7 @@ namespace CampusMart_Backend.Infra.Service
 {
     public class ContactUsPageService : IContactUsPageService
     {
-        private readonly IContactUsPageRepository contactUsPageRepository;
+       private readonly IContactUsPageRepository contactUsPageRepository;
 
         public ContactUsPageService(IContactUsPageRepository contactUsPageRepository)
         {

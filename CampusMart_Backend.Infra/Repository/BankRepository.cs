@@ -1,6 +1,5 @@
 ﻿using CampusMart_Backend.Core.Common;
 using CampusMart_Backend.Core.Data;
-using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
 using System;

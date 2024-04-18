@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Repository
 {
     public interface ISpecialRequestRepository
     {
-        List<Specialrequest> GetAllRequests();
+       List<Specialrequest> GetAllRequests();
         Specialrequest GetRequestById(int requestId);
         void CreateRequest(Specialrequest request);
         void UpdateRequest(Specialrequest request);

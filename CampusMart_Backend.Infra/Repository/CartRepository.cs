@@ -13,7 +13,7 @@ namespace CampusMart_Backend.Infra.Repository
 {
     public class CartRepository : ICartRepository
     {
-       private readonly IDbContext dbContext;
+        private readonly IDbContext dbContext;
 
         public CartRepository(IDbContext _dbContext)
         {
@@ -29,39 +29,40 @@ namespace CampusMart_Backend.Infra.Repository
         public Cart GetCartById(int cartId)
         {
             var p = new DynamicParameters();
-            p.Add("c_CartID", cartId, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_CartID", cartId, DbType.Int32, ParameterDirection.Input);
             var result = dbContext.Connection.QueryFirstOrDefault<Cart>("Cart_Package.GetCartById", p, commandType: CommandType.StoredProcedure);
-
             return result;
         }
 
         public void CreateCart(Cart cart)
         {
             var p = new DynamicParameters();
-            p.Add("c_Quantity", cart.Quantity, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_ConsumerID", cart.Consumerid, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_ProductID", cart.Productid, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_OrderID", cart.Orderid, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_StoreID", cart.Storeid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Cart_Package.Create_Cart", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_Quantity", cart.Quantity, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_Total", cart.Total, DbType.Decimal, ParameterDirection.Input);
+            p.Add("p_ConsumerID", cart.Consumerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ProductID", cart.Productid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_OrderID", cart.Orderid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_StoreID", cart.Storeid, DbType.Int32, ParameterDirection.Input);
+            dbContext.Connection.Execute("Cart_Package.CreateCart", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateCart(Cart cart)
         {
             var p = new DynamicParameters();
-            p.Add("c_CartID", cart.Cartid, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_Quantity", cart.Quantity, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_ConsumerID", cart.Consumerid, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_ProductID", cart.Productid, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_OrderID", cart.Orderid, DbType.Int32, ParameterDirection.Input);
-            p.Add("c_StoreID", cart.Storeid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Cart_Package.Update_Cart", p, commandType: CommandType.StoredProcedure);
+            p.Add("p_CartID", cart.Cartid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_Quantity", cart.Quantity, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_Total", cart.Total, DbType.Decimal, ParameterDirection.Input);
+            p.Add("p_ConsumerID", cart.Consumerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ProductID", cart.Productid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_OrderID", cart.Orderid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_StoreID", cart.Storeid, DbType.Int32, ParameterDirection.Input);
+            dbContext.Connection.Execute("Cart_Package.UpdateCart", p, commandType: CommandType.StoredProcedure);
         }
 
         public void DeleteCart(int cartId)
         {
             var p = new DynamicParameters();
-            p.Add("c_CartID", cartId, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_CartID", cartId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Cart_Package.DeleteCart", p, commandType: CommandType.StoredProcedure);
         }
     }

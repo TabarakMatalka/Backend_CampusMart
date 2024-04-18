@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Repository
 {
     public interface ICartRepository
     {
-        List<Cart> GetAllCarts();
+       List<Cart> GetAllCarts();
         Cart GetCartById(int cartId);
         void CreateCart(Cart cart);
         void UpdateCart(Cart cart);

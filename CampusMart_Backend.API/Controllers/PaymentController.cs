@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        private readonly IPaymentService paymentService;
+       private readonly IPaymentService paymentService;
 
         public PaymentController(IPaymentService paymentService)
         {

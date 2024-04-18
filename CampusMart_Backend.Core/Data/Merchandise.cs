@@ -19,6 +19,7 @@ namespace CampusMart_Backend.Core.Data
         public decimal? Price { get; set; }
         public decimal? Quantity { get; set; }
         public string? Image { get; set; }
+        public string? Status { get; set; }
         public decimal? Storeid { get; set; }
 
         public virtual Store? Store { get; set; }

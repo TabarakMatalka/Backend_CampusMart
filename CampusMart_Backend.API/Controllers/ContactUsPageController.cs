@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class ContactUsPageController : ControllerBase
     {
-        private readonly IContactUsPageService contactUsPageService;
+       private readonly IContactUsPageService contactUsPageService;
 
         public ContactUsPageController(IContactUsPageService contactUsPageService)
         {

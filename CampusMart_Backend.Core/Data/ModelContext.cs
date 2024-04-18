@@ -23,7 +23,6 @@ namespace CampusMart_Backend.Core.Data
         public virtual DbSet<Cart> Carts { get; set; } = null!;
         public virtual DbSet<Contactu> Contactus { get; set; } = null!;
         public virtual DbSet<Contactuspage> Contactuspages { get; set; } = null!;
-        public virtual DbSet<Generaluser> Generalusers { get; set; } = null!;
         public virtual DbSet<Homepage> Homepages { get; set; } = null!;
         public virtual DbSet<Login> Logins { get; set; } = null!;
         public virtual DbSet<Merchandise> Merchandises { get; set; } = null!;
@@ -42,13 +41,13 @@ namespace CampusMart_Backend.Core.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=xe)));User Id=C##CampusMartDB;Password=CampusMartDB;");
+                optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=xe)));User Id=C##CampusMartDatabase;Password=CampusMartDatabase;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("C##CAMPUSMARTDB")
+            modelBuilder.HasDefaultSchema("C##CAMPUSMARTDATABASE")
                 .UseCollation("USING_NLS_COMP");
 
             modelBuilder.Entity<Aboutuspage>(entity =>
@@ -180,6 +179,21 @@ namespace CampusMart_Backend.Core.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("CONSUMERID");
 
+                entity.Property(e => e.Email)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("EMAIL");
+
+                entity.Property(e => e.Fullname)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("FULLNAME");
+
+                entity.Property(e => e.Imagepath)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("IMAGEPATH");
+
                 entity.Property(e => e.Isprovider)
                     .HasColumnType("NUMBER")
                     .HasColumnName("ISPROVIDER")
@@ -195,20 +209,30 @@ namespace CampusMart_Backend.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("LOCATION_LONGITUDE");
 
+                entity.Property(e => e.Password)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("PASSWORD");
+
                 entity.Property(e => e.Phone)
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("PHONE");
 
-                entity.Property(e => e.Userid)
+                entity.Property(e => e.Roleid)
                     .HasColumnType("NUMBER")
-                    .HasColumnName("USERID");
+                    .HasColumnName("ROLEID");
 
-                entity.HasOne(d => d.User)
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("STATUS");
+
+                entity.HasOne(d => d.Role)
                     .WithMany(p => p.Campusconsumers)
-                    .HasForeignKey(d => d.Userid)
+                    .HasForeignKey(d => d.Roleid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("FK_USERID_CONSUMER");
+                    .HasConstraintName("FK_ROLEID");
             });
 
             modelBuilder.Entity<Campusserviceprovider>(entity =>
@@ -221,6 +245,10 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnType("NUMBER")
                     .ValueGeneratedOnAdd()
                     .HasColumnName("PROVIDERID");
+
+                entity.Property(e => e.Consumerid)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("CONSUMERID");
 
                 entity.Property(e => e.LocationLatitude)
                     .HasMaxLength(1000)
@@ -237,15 +265,11 @@ namespace CampusMart_Backend.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("PHONE");
 
-                entity.Property(e => e.Userid)
-                    .HasColumnType("NUMBER")
-                    .HasColumnName("USERID");
-
-                entity.HasOne(d => d.User)
+                entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Campusserviceproviders)
-                    .HasForeignKey(d => d.Userid)
-                    .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("FK_USERID_PROVIDER");
+                    .HasForeignKey(d => d.Consumerid)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_CONSUMERID_PROVIDER");
             });
 
             modelBuilder.Entity<Cart>(entity =>
@@ -276,6 +300,10 @@ namespace CampusMart_Backend.Core.Data
                 entity.Property(e => e.Storeid)
                     .HasColumnType("NUMBER")
                     .HasColumnName("STOREID");
+
+                entity.Property(e => e.Total)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("TOTAL");
 
                 entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Carts)
@@ -403,58 +431,6 @@ namespace CampusMart_Backend.Core.Data
                     .HasMaxLength(1000)
                     .IsUnicode(false)
                     .HasColumnName("SUBJECT");
-            });
-
-            modelBuilder.Entity<Generaluser>(entity =>
-            {
-                entity.HasKey(e => e.Userid);
-
-                entity.ToTable("GENERALUSER");
-
-                entity.Property(e => e.Userid)
-                    .HasColumnType("NUMBER")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("USERID");
-
-                entity.Property(e => e.Email)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("EMAIL");
-
-                entity.Property(e => e.Fullname)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("FULLNAME");
-
-                entity.Property(e => e.Imagepath)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGEPATH");
-
-                entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("PASSWORD");
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("PHONE");
-
-                entity.Property(e => e.Roleid)
-                    .HasColumnType("NUMBER")
-                    .HasColumnName("ROLEID");
-
-                entity.Property(e => e.Status)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("STATUS");
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Generalusers)
-                    .HasForeignKey(d => d.Roleid)
-                    .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("FK_ROLEID");
             });
 
             modelBuilder.Entity<Homepage>(entity =>
@@ -608,6 +584,11 @@ namespace CampusMart_Backend.Core.Data
                 entity.Property(e => e.Rate)
                     .HasColumnType("FLOAT")
                     .HasColumnName("RATE");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("STATUS");
 
                 entity.Property(e => e.Storeid)
                     .HasColumnType("NUMBER")

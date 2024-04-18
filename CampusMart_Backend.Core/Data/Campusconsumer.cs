@@ -8,6 +8,7 @@ namespace CampusMart_Backend.Core.Data
         public Campusconsumer()
         {
             Banks = new HashSet<Bank>();
+            Campusserviceproviders = new HashSet<Campusserviceprovider>();
             Carts = new HashSet<Cart>();
             Logins = new HashSet<Login>();
             MerchandiseReviews = new HashSet<MerchandiseReview>();
@@ -18,14 +19,20 @@ namespace CampusMart_Backend.Core.Data
         }
 
         public decimal Consumerid { get; set; }
-        public string? Phone { get; set; }
         public decimal? Isprovider { get; set; }
         public string? LocationLatitude { get; set; }
         public string? LocationLongitude { get; set; }
-        public decimal? Userid { get; set; }
+        public string? Fullname { get; set; }
+        public string? Email { get; set; }
+        public string? Imagepath { get; set; }
+        public string? Phone { get; set; }
+        public string? Status { get; set; }
+        public string? Password { get; set; }
+        public decimal? Roleid { get; set; }
 
-        public virtual Generaluser? User { get; set; }
+        public virtual Role? Role { get; set; }
         public virtual ICollection<Bank> Banks { get; set; }
+        public virtual ICollection<Campusserviceprovider> Campusserviceproviders { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Login> Logins { get; set; }
         public virtual ICollection<MerchandiseReview> MerchandiseReviews { get; set; }

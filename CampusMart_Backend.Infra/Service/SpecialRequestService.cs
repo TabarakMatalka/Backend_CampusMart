@@ -12,7 +12,7 @@ namespace CampusMart_Backend.Infra.Service
 
     public class SpecialRequestService : ISpecialRequestService
     {
-        private readonly ISpecialRequestRepository specialRequestRepository;
+       private readonly ISpecialRequestRepository specialRequestRepository;
 
         public SpecialRequestService(ISpecialRequestRepository specialRequestRepository)
         {

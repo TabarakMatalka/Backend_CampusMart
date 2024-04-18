@@ -17,8 +17,6 @@ builder.Services.AddScoped<IDbContext, DbContext>();
 
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IRoleService, RoleService>();
-builder.Services.AddScoped<IGeneralUserRepository, GeneralUserRepository>();
-builder.Services.AddScoped<IGeneralUserService, GeneralUserService>();
 builder.Services.AddScoped<ICampusConsumerRepository, CampusConsumerRepository>();
 builder.Services.AddScoped<ICampusConsumerService, CampusConsumerService>();
 builder.Services.AddScoped<ICampusServiceProviderRepository, CampusServiceProviderRepository>();

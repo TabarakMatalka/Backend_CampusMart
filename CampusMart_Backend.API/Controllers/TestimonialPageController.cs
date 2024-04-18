@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class TestimonialPageController : ControllerBase
     {
-        private readonly ITestimonialPageService testimonialPageService;
+       private readonly ITestimonialPageService testimonialPageService;
 
         public TestimonialPageController(ITestimonialPageService testimonialPageService)
         {

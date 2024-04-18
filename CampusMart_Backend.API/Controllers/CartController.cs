@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly ICartService cartService;
+    private readonly ICartService cartService;
 
         public CartController(ICartService cartService)
         {

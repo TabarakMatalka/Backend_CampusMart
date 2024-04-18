@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IStoreReviewService
     {
-         List<StoreReview> GetAllStoreReviews();
+        List<StoreReview> GetAllStoreReviews();
          StoreReview GetStoreReviewById(int storeReviewId);
          void CreateStoreReview(StoreReview storeReview);
          void UpdateStoreReview(StoreReview storeReview);

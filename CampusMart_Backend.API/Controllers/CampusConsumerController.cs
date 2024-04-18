@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class CampusConsumerController : ControllerBase
     {
-        private readonly ICampusConsumerService campusConsumerService;
+       private readonly ICampusConsumerService campusConsumerService;
 
         public CampusConsumerController(ICampusConsumerService campusConsumerService)
         {

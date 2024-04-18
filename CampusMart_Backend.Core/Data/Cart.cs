@@ -7,6 +7,7 @@ namespace CampusMart_Backend.Core.Data
     {
         public decimal Cartid { get; set; }
         public decimal? Quantity { get; set; }
+        public decimal? Total { get; set; }
         public decimal? Consumerid { get; set; }
         public decimal? Productid { get; set; }
         public decimal? Orderid { get; set; }
