@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CampusMart_Backend.API.props" />
+</Project>
