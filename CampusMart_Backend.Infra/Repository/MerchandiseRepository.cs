@@ -71,6 +71,22 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("m_ProductID", merchandiseId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Merchandise_Package.DeleteMerchandise", p, commandType: CommandType.StoredProcedure);
         }
+
+
+        public List<Merchandise> GetAllPendingMerchandise()
+        {
+            IEnumerable<Merchandise> result = dbContext.Connection.Query<Merchandise>("Merchandise_Package.GetAllPendingMerchandise", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+        public void UpdateMerchandiseRequestStatus(int merchandiseId, string newStatus)
+        {
+            var p = new DynamicParameters();
+            p.Add("merchandise_id_param", merchandiseId, DbType.Int32, ParameterDirection.Input);
+            p.Add("new_status_param", newStatus, DbType.String, ParameterDirection.Input);
+            dbContext.Connection.Execute("Merchandise_Package.UpdateMerchandiseRequestStatus", p, commandType: CommandType.StoredProcedure);
+        }
+
+
     }
 
 }

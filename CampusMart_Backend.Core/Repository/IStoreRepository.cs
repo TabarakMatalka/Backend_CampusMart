@@ -15,5 +15,8 @@ namespace CampusMart_Backend.Core.Repository
         void UpdateStore(Store store);
         void DeleteStore(int storeId);
         List<Store> GetAllStoresFromAllProviders();
+
+        List<Store> GetAllPendingStores();
+        void UpdateStoreApprovalStatus(int storeId, string newStatus);
     }
 }

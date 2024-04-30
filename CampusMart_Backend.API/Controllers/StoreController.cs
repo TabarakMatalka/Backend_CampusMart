@@ -57,5 +57,22 @@ namespace CampusMart_Backend.API.Controllers
         {
             return storeService.GetAllStoresFromAllProviders();
         }
+
+
+
+        [HttpGet]
+        [Route("GetPendingStores")]
+        public List<Store> GetAllPendingStores()
+        {
+            return storeService.GetAllPendingStores();
+        }
+
+        [HttpPut]
+        [Route("UpdateStoreApprovalStatus/{storeId}/{newStatus}")]
+        public void UpdateStoreApprovalStatus(int storeId, string newStatus)
+        {
+            storeService.UpdateStoreApprovalStatus(storeId, newStatus);
+        }
+
     }
 }

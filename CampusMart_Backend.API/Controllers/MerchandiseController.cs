@@ -50,5 +50,23 @@ namespace CampusMart_Backend.API.Controllers
         {
             merchandiseService.DeleteMerchandise(id);
         }
+
+
+
+        [HttpGet]
+        [Route("GetAllPendingMerchandise")]
+        public List<Merchandise> GetAllPendingMerchandise()
+        {
+            return merchandiseService.GetAllPendingMerchandise();
+        }
+
+        [HttpPut]
+        [Route("UpdateMerchandiseRequestStatus/{merchandiseId}/{newStatus}")]
+        public void UpdateMerchandiseRequestStatus(int merchandiseId, string newStatus)
+        {
+            merchandiseService.UpdateMerchandiseRequestStatus(merchandiseId, newStatus);
+        }
+
+
     }
 }

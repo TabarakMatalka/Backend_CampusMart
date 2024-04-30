@@ -43,5 +43,17 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.merchandiseRepository.UpdateMerchandise(merchandise);
         }
+
+        public List<Merchandise> GetAllPendingMerchandise()
+        {
+            return this.merchandiseRepository.GetAllPendingMerchandise();
+        }
+
+
+        public void UpdateMerchandiseRequestStatus(int merchandiseId, string newStatus)
+        {
+            this.merchandiseRepository.UpdateMerchandiseRequestStatus(merchandiseId, newStatus);
+        }
+
     }
 }

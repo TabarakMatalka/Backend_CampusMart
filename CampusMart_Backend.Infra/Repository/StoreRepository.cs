@@ -77,5 +77,23 @@ namespace CampusMart_Backend.Infra.Repository
 
             return result.ToList();
         }
+
+        public List<Store> GetAllPendingStores()
+        {
+
+
+            IEnumerable<Store> result = dbContext.Connection.Query<Store>("Store_Package.GetAllPendingStores", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public void UpdateStoreApprovalStatus(int storeId, string newStatus)
+        {
+            var p = new DynamicParameters();
+            p.Add("store_id_param", storeId, DbType.Int32, ParameterDirection.Input);
+            p.Add("new_status_param", newStatus, DbType.String, ParameterDirection.Input);
+            dbContext.Connection.Execute("Store_Package.UpdateStoreApprovalStatus", p, commandType: CommandType.StoredProcedure);
+        }
+
+
     }
 }
