@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Repository
 {
     public interface IHomePageRepository
     {
-        List<Homepage> GetAllHomePages();
+       List<Homepage> GetAllHomePages();
         Homepage GetHomePageById(int homePageId);
         void CreateHomePage(Homepage homePage);
         void UpdateHomePage(Homepage homePage);

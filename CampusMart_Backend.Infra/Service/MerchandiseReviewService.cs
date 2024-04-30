@@ -11,7 +11,7 @@ namespace CampusMart_Backend.Infra.Service
 {
     public class MerchandiseReviewService : IMerchandiseReviewService
     {
-        private readonly IMerchandiseReviewRepository merchandiseReviewRepository;
+      private readonly IMerchandiseReviewRepository merchandiseReviewRepository;
 
         public MerchandiseReviewService(IMerchandiseReviewRepository merchandiseReviewRepository)
         {

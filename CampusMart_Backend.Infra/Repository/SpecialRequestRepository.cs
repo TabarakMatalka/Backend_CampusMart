@@ -13,7 +13,7 @@ namespace CampusMart_Backend.Infra.Repository
 {
     public class SpecialRequestRepository : ISpecialRequestRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public SpecialRequestRepository(IDbContext _dbContext)
         {

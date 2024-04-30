@@ -12,7 +12,7 @@ namespace CampusMart_Backend.Infra.Service
 
     public class PaymentService : IPaymentService
     {
-        private readonly IPaymentRepository paymentRepository;
+      private readonly IPaymentRepository paymentRepository;
 
         public PaymentService(IPaymentRepository paymentRepository)
         {

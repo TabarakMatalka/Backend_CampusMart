@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Repository
 {
     public interface ILoginRepository
     {
-        List<Login> GetAllLogins();
+       List<Login> GetAllLogins();
         Login GetLoginById(int loginId);
         void CreateLogin(Login login);
         void UpdateLogin(Login login);

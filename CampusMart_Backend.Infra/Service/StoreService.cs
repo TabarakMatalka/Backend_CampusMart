@@ -43,5 +43,10 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.storeRepository.UpdateStore(store);
         }
+
+        public List<Store> GetAllStoresFromAllProviders()
+        {
+            return this.storeRepository.GetAllStoresFromAllProviders();
+        }
     }
 }

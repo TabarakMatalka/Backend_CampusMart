@@ -9,7 +9,7 @@ namespace CampusMart_Backend.API.Controllers
     [ApiController]
     public class MerchandiseReviewController : ControllerBase
     {
-        private readonly IMerchandiseReviewService merchandiseReviewService;
+       private readonly IMerchandiseReviewService merchandiseReviewService;
 
         public MerchandiseReviewController(IMerchandiseReviewService merchandiseReviewService)
         {

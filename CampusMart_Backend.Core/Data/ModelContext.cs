@@ -190,7 +190,7 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnName("FULLNAME");
 
                 entity.Property(e => e.Imagepath)
-                    .HasMaxLength(200)
+                    .HasMaxLength(1000)
                     .IsUnicode(false)
                     .HasColumnName("IMAGEPATH");
 
@@ -260,10 +260,20 @@ namespace CampusMart_Backend.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("LOCATION_LONGITUDE");
 
+                entity.Property(e => e.Motivation)
+                    .HasMaxLength(300)
+                    .IsUnicode(false)
+                    .HasColumnName("MOTIVATION");
+
                 entity.Property(e => e.Phone)
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("PHONE");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("STATUS");
 
                 entity.HasOne(d => d.Consumer)
                     .WithMany(p => p.Campusserviceproviders)
@@ -564,7 +574,7 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnName("DESCRIPTION");
 
                 entity.Property(e => e.Image)
-                    .HasMaxLength(250)
+                    .HasMaxLength(1000)
                     .IsUnicode(false)
                     .HasColumnName("IMAGE");
 
@@ -831,8 +841,13 @@ namespace CampusMart_Backend.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("APPROVALSTATUS");
 
+                entity.Property(e => e.Description)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("DESCRIPTION");
+
                 entity.Property(e => e.Image)
-                    .HasMaxLength(250)
+                    .HasMaxLength(1000)
                     .IsUnicode(false)
                     .HasColumnName("IMAGE");
 

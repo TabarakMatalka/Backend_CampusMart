@@ -12,7 +12,7 @@ namespace CampusMart_Backend.Infra.Service
 
     public class LoginService : ILoginService
     {
-        private readonly ILoginRepository loginRepository;
+      private readonly ILoginRepository loginRepository;
 
         public LoginService(ILoginRepository loginRepository)
         {

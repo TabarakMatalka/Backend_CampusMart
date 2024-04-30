@@ -13,7 +13,7 @@ namespace CampusMart_Backend.Infra.Repository
 {
     public class MerchandiseReviewRepository : IMerchandiseReviewRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public MerchandiseReviewRepository(IDbContext _dbContext)
         {

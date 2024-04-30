@@ -4,13 +4,17 @@ using CampusMart_Backend.Core.Service;
 using CampusMart_Backend.Infra.Common;
 using CampusMart_Backend.Infra.Repository;
 using CampusMart_Backend.Infra.Service;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IDbContext, DbContext>();
@@ -26,7 +30,7 @@ builder.Services.AddScoped<ISpecialRequestService, SpecialRequestService>();
 builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
 builder.Services.AddScoped<IContactUsService, ContactUsService>();
 builder.Services.AddScoped<IMerchandiseRepository, MerchandiseRepository>();
-builder.Services.AddScoped< IMerchandiseService, MerchandiseService>();
+builder.Services.AddScoped<IMerchandiseService, MerchandiseService>();
 
 builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
@@ -56,6 +60,15 @@ builder.Services.AddScoped<IHomePageService, HomePageService>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 
+// CORS Configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder => builder.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -66,6 +79,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowOrigin"); // Enable CORS
 
 app.UseAuthorization();
 

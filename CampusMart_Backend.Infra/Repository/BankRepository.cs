@@ -13,7 +13,7 @@ namespace CampusMart_Backend.Infra.Repository
 {
     public class BankRepository : IBankRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public BankRepository(IDbContext _dbContext)
         {

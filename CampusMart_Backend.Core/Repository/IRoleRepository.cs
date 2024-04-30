@@ -9,11 +9,10 @@ namespace CampusMart_Backend.Core.Repository
 {
     public  interface IRoleRepository
     {
-        List<Role> GetAllRoles();
+       List<Role> GetAllRoles();
         Role GetRoleById(int id);
         void CreateRole(Role role);
         void UpdateRole(Role role);
         void DeleteRole(int id);
-  
     }
 }

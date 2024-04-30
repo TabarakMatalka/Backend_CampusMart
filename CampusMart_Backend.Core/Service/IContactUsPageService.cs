@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IContactUsPageService
     {
-        List<Contactuspage> GetAllContactUsPages();
+       List<Contactuspage> GetAllContactUsPages();
         Contactuspage GetContactUsPageById(int pageId);
         void CreateContactUsPage(Contactuspage contactUsPage);
         void UpdateContactUsPage(Contactuspage contactUsPage);

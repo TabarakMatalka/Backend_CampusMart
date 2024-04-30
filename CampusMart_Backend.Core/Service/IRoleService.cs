@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IRoleService
     {
-       List<Role> GetAllRoles();
+        List<Role> GetAllRoles();
         Role GetRoleByID(int id);
         void CreateRole(Role role);
         void UpdateRole(Role role);

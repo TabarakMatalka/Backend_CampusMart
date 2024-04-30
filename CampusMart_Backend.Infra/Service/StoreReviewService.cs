@@ -12,7 +12,7 @@ namespace CampusMart_Backend.Infra.Service
 
     public class StoreReviewService : IStoreReviewService
     {
-        private readonly IStoreReviewRepository storeReviewRepository;
+       private readonly IStoreReviewRepository storeReviewRepository;
 
         public StoreReviewService(IStoreReviewRepository storeReviewRepository)
         {

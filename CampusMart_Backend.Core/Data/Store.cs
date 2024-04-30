@@ -19,6 +19,7 @@ namespace CampusMart_Backend.Core.Data
         public string? Approvalstatus { get; set; }
         public string? Image { get; set; }
         public decimal? Providerid { get; set; }
+        public string? Description { get; set; }
 
         public virtual Campusserviceprovider? Provider { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }

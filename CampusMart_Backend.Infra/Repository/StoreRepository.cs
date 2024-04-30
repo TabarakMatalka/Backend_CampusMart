@@ -3,6 +3,7 @@ using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CampusMart_Backend.Infra.Repository
 {
     public class StoreRepository : IStoreRepository
     {
-        private readonly IDbContext dbContext;
+       private readonly IDbContext dbContext;
 
         public StoreRepository(IDbContext _dbContext)
         {
@@ -43,7 +44,8 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("approval_status_param", store.Approvalstatus, DbType.String, ParameterDirection.Input);
             p.Add("image_param", store.Image, DbType.String, ParameterDirection.Input);
             p.Add("provider_id_param", store.Providerid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Store_Package.CreateStore", p, commandType: CommandType.StoredProcedure);
+            p.Add("description_param", store.Description, DbType.String, ParameterDirection.Input); // Adding description parameter
+            dbContext.Connection.Execute("Store_Package.Insert_Store", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateStore(Store store)
@@ -56,14 +58,24 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("approval_status_param", store.Approvalstatus, DbType.String, ParameterDirection.Input);
             p.Add("image_param", store.Image, DbType.String, ParameterDirection.Input);
             p.Add("provider_id_param", store.Providerid, DbType.Int32, ParameterDirection.Input);
-            dbContext.Connection.Execute("Store_Package.UpdateStore", p, commandType: CommandType.StoredProcedure);
+            p.Add("description_param", store.Description, DbType.String, ParameterDirection.Input); // Adding description parameter
+            dbContext.Connection.Execute("Store_Package.Update_Store", p, commandType: CommandType.StoredProcedure);
         }
+
 
         public void DeleteStore(int storeId)
         {
             var p = new DynamicParameters();
             p.Add("store_id_param", storeId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Store_Package.DeleteStore", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<Store> GetAllStoresFromAllProviders()
+        {
+
+            IEnumerable<Store> result = dbContext.Connection.Query<Store>("GetAllStoresFromAllProviders", commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
         }
     }
 }

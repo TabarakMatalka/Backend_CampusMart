@@ -9,7 +9,7 @@ namespace CampusMart_Backend.Core.Service
 {
     public interface IPaymentService
     {
-        List<Payment> GetAllPayments();
+       List<Payment> GetAllPayments();
         Payment GetPaymentById(int paymentId);
         void CreatePayment(Payment payment);
         void UpdatePayment(Payment payment);

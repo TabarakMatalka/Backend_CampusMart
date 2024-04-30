@@ -50,5 +50,12 @@ namespace CampusMart_Backend.API.Controllers
         {
             storeService.DeleteStore(storeId);
         }
+
+        [HttpGet]
+        [Route("GetAllStoresFromAllProviders")]
+        public List<Store> GetAllStoresFromAllProviders()
+        {
+            return storeService.GetAllStoresFromAllProviders();
+        }
     }
 }
