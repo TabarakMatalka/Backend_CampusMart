@@ -42,6 +42,10 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.testimonialRepository.UpdateTestimonial(testimonial);
         }
+        public void UpdateTestimonialStatus(int testimonialId, string newStatus)
+        {
+            this.testimonialRepository.UpdateTestimonialStatus(testimonialId, newStatus);
+        }
     }
 
 }

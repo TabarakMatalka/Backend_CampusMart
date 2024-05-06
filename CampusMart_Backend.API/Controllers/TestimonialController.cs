@@ -50,5 +50,12 @@ namespace CampusMart_Backend.API.Controllers
         {
             testimonialService.DeleteTestimonial(testimonialId);
         }
+
+        [HttpPut]
+        [Route("UpdateTestimonialStatus/{testimonialId}/{newStatus}")]
+        public void UpdateTestimonialStatus(int testimonialId, string newStatus)
+        {
+            testimonialService.UpdateTestimonialStatus(testimonialId, newStatus);
+        }
     }
 }

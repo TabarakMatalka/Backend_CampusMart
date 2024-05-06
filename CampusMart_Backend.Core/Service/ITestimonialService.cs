@@ -14,5 +14,7 @@ namespace CampusMart_Backend.Core.Service
         void CreateTestimonial(Testimonial testimonial);
         void UpdateTestimonial(Testimonial testimonial);
         void DeleteTestimonial(int testimonialId);
+        void UpdateTestimonialStatus(int testimonialId, string newStatus);
+
     }
 }

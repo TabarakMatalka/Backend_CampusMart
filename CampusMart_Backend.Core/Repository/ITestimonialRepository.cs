@@ -9,10 +9,12 @@ namespace CampusMart_Backend.Core.Repository
 {
     public interface ITestimonialRepository
     {
-         List<Testimonial> GetAllTestimonials();
+        List<Testimonial> GetAllTestimonials();
         Testimonial GetTestimonialById(int testimonialId);
         void CreateTestimonial(Testimonial testimonial);
         void UpdateTestimonial(Testimonial testimonial);
         void DeleteTestimonial(int testimonialId);
+        void UpdateTestimonialStatus(int testimonialId, string newStatus);
+
     }
 }

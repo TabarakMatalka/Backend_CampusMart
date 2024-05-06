@@ -14,5 +14,9 @@ namespace CampusMart_Backend.Core.Service
         void CreateServiceProvider(Campusserviceprovider provider);
         void UpdateServiceProvider(Campusserviceprovider provider);
         void DeleteServiceProvider(int providerId);
+
+        List<Campusserviceprovider> GetAllPendingServiceProviders();
+        void AcceptServiceProvider(int consumerId, int providerId);
+        void RejectServiceProvider(int consumerId, int providerId);
     }
 }

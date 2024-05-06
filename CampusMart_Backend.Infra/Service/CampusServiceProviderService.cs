@@ -42,6 +42,20 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.campusServiceProviderRepository.UpdateServiceProvider(provider);
         }
+
+        public List<Campusserviceprovider> GetAllPendingServiceProviders()
+        {
+            return this.campusServiceProviderRepository.GetAllPendingServiceProviders();
+        }
+
+        public void AcceptServiceProvider(int consumerId, int providerId)
+        {
+            this.campusServiceProviderRepository.AcceptServiceProvider(consumerId, providerId);
+        }
+        public void RejectServiceProvider(int consumerId, int providerId)
+        {
+            this.campusServiceProviderRepository.RejectServiceProvider(consumerId, providerId);
+        }
     }
 
 }

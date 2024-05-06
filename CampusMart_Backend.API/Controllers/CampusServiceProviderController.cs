@@ -50,5 +50,26 @@ namespace CampusMart_Backend.API.Controllers
         {
             campusServiceProviderService.DeleteServiceProvider(id);
         }
+
+        [HttpGet]
+        [Route("GetAllPendingServiceProviders")]
+        public List<Campusserviceprovider> GetAllPendingServiceProviders()
+        {
+            return campusServiceProviderService.GetAllPendingServiceProviders();
+        }
+
+        [HttpPut]
+        [Route("AcceptServiceProvider/{consumerId}/{providerId}")]
+        public void AcceptServiceProvider(int consumerId, int providerId)
+        {
+                campusServiceProviderService.AcceptServiceProvider(consumerId, providerId);
+        }
+
+        [HttpPut]
+        [Route("RejectServiceProvider/{consumerId}/{providerId}")]
+        public void RejectServiceProvider(int consumerId, int providerId)
+        {
+            campusServiceProviderService.RejectServiceProvider(consumerId, providerId);
+        }
     }
 }

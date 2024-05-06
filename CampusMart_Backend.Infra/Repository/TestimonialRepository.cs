@@ -61,6 +61,14 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("testimonial_id_param", testimonialId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Testimonial_Package.DeleteTestimonial", p, commandType: CommandType.StoredProcedure);
         }
+
+        public void UpdateTestimonialStatus(int testimonialId, string newStatus)
+        {
+            var p = new DynamicParameters();
+            p.Add("testimonial_id_param", testimonialId, DbType.Int32, ParameterDirection.Input);
+            p.Add("new_status_param", newStatus, DbType.String, ParameterDirection.Input);
+            dbContext.Connection.Execute("UpdateTestimonialStatus", p, commandType: CommandType.StoredProcedure);
+        }
     }
 
 }
