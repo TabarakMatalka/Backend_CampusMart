@@ -164,3 +164,4 @@ C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.AP
 C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.API\obj\Debug\net6.0\CampusMart_Backend.API.pdb
 C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.API\obj\Debug\net6.0\CampusMart_Backend.API.genruntimeconfig.cache
 C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.API\obj\Debug\net6.0\ref\CampusMart_Backend.API.dll
+C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

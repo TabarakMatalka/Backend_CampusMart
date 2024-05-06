@@ -2,6 +2,7 @@
 using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -79,6 +80,23 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("id", consumerId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("CampusConsumer_Package.DeleteConsumer", p, commandType: CommandType.StoredProcedure);
         }
+        public void CreateCampusConsumerLogin(Campusconsumer consumer)
+        {
+
+                var parameters = new DynamicParameters();
+                parameters.Add("p_fullName", consumer.Fullname, DbType.String, ParameterDirection.Input);
+                parameters.Add("p_email", consumer.Email, DbType.String, ParameterDirection.Input);
+                parameters.Add("p_locationLatitude", consumer.LocationLatitude, DbType.String, ParameterDirection.Input);
+                parameters.Add("p_locationLongitude", consumer.LocationLongitude, DbType.String, ParameterDirection.Input);
+                parameters.Add("p_phone", consumer.Phone, DbType.String, ParameterDirection.Input);
+                parameters.Add("p_imagepath", consumer.Imagepath, DbType.String, ParameterDirection.Input);
+                parameters.Add("p_password", consumer.Password, DbType.String, ParameterDirection.Input);
+                parameters.Add("p_roleId", consumer.Roleid, DbType.Int32, ParameterDirection.Input);
+
+            dbContext.Connection.Execute("CreateCampusConsumerLogin", parameters, commandType: CommandType.StoredProcedure);
+
+        
+    }
     }
 
     }

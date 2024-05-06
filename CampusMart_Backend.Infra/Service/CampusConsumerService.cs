@@ -42,6 +42,11 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.campusConsumerRepository.UpdateConsumer(consumer);
         }
+
+        public void CreateCampusConsumerLogin(Campusconsumer consumer)
+        {
+            this.campusConsumerRepository.CreateCampusConsumerLogin(consumer);
+        }
     }
 
 }
