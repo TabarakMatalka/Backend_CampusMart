@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pt4+wdEKwnVBp2LNkmVmv50oobAE3qikyoBLvQFZ57qn3RSvzMhR08eMIbKWaujWH7TuN0WMcrsFxd9W18zwaA==",
+  "dgSpecHash": "8D50MAuVs+F1XQhVtHuNpMGxPxzR+CU7VcqvJOsuIvIWa2FXoWL8E+e4txIiFjmc6eEoNQ1GG8NdOhMyHQY5uw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\Project2\\Backend_CampusMart\\CampusMart_Backend.Infra\\CampusMart_Backend.Infra.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\GP\\github\\Backend_CampusMart\\CampusMart_Backend.Infra\\CampusMart_Backend.Infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
