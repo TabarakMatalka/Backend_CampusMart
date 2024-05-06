@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7OKUiA9TuZs+lgVFMpPPtSXyHHJKmGRmdgJ6VJP10ulQ+XdpV9MFmBZT6Xj55gfjNNA4xSl/guKtY4B28Yn2BQ==",
+  "dgSpecHash": "LpTfKyj5R5iogleBuhDT7RYLxxJCpJ3Q8lmDMWPuuCR6/dmUlIdvkP+V8y0zXsmxNNjDsQ7s1GVqA/TUwbbKcw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\GP\\github_backend\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\GP\\github\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.6\\microsoft.entityframeworkcore.6.0.6.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.6\\microsoft.entityframeworkcore.abstractions.6.0.6.nupkg.sha512",

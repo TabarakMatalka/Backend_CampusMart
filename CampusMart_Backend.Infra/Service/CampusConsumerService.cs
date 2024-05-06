@@ -1,8 +1,10 @@
 ﻿using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.Repository;
 using CampusMart_Backend.Core.Service;
+using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +49,13 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.campusConsumerRepository.CreateCampusConsumerLogin(consumer);
         }
+
+        public Campusconsumer GetConsumerByEmail(string email)
+        {
+          
+            return this.campusConsumerRepository.GetConsumerByEmail(email);
+        }
+
     }
 
 }

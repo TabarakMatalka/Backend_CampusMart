@@ -83,6 +83,14 @@ namespace CampusMart_Backend.API.Controllers
                 return BadRequest("Invalid file format. Please upload an image file.");
             }
         }
+
+       
+        [Route("GetConsumerByEmail")]
+        [HttpGet]
+        public Campusconsumer GetConsumerByEmail(string email)
+        {
+            return this.campusConsumerService.GetConsumerByEmail(email);
+        }
     }
 }
 

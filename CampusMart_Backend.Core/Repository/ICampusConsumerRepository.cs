@@ -16,5 +16,7 @@ namespace CampusMart_Backend.Core.Repository
         void DeleteConsumer(int consumerId);
 
         void CreateCampusConsumerLogin(Campusconsumer consumer);
+
+         Campusconsumer GetConsumerByEmail(string email);
     }
 }

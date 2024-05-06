@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\GP\\github_backend\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj": {}
+    "C:\\Users\\user\\Desktop\\GP\\github\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\GP\\github_backend\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj": {
+    "C:\\Users\\user\\Desktop\\GP\\github\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\GP\\github_backend\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\GP\\github\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj",
         "projectName": "CampusMart_Backend.Core",
-        "projectPath": "C:\\Users\\user\\Desktop\\GP\\github_backend\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\GP\\github\\Backend_CampusMart\\CampusMart_Backend.Core\\CampusMart_Backend.Core.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\GP\\github_backend\\Backend_CampusMart\\CampusMart_Backend.Core\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\GP\\github\\Backend_CampusMart\\CampusMart_Backend.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

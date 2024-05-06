@@ -97,6 +97,18 @@ namespace CampusMart_Backend.Infra.Repository
 
         
     }
-    }
+
+        public Campusconsumer GetConsumerByEmail(string email)
+        {
+            // Execute stored procedure to get consumer by email
+            var p = new DynamicParameters();
+            p.Add("p_email", email, DbType.String, ParameterDirection.Input);
+
+            var result = dbContext.Connection.QueryFirstOrDefault<Campusconsumer>("GetConsumerByEmail", p, commandType: CommandType.StoredProcedure);
+
+            return result;
+        }
 
     }
+
+}

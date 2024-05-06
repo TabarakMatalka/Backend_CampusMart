@@ -22,3 +22,15 @@ C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.Co
 C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\refint\CampusMart_Backend.Core.dll
 C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.pdb
 C:\Users\user\Desktop\GP\github_backend\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\ref\CampusMart_Backend.Core.dll
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\bin\Debug\net6.0\CampusMart_Backend.Core.deps.json
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\bin\Debug\net6.0\CampusMart_Backend.Core.dll
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\bin\Debug\net6.0\CampusMart_Backend.Core.pdb
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.AssemblyInfo.cs
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.dll
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\refint\CampusMart_Backend.Core.dll
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\CampusMart_Backend.Core.pdb
+C:\Users\user\Desktop\GP\github\Backend_CampusMart\CampusMart_Backend.Core\obj\Debug\net6.0\ref\CampusMart_Backend.Core.dll
