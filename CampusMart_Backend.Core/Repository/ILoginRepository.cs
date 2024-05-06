@@ -14,6 +14,8 @@ namespace CampusMart_Backend.Core.Repository
         void CreateLogin(Login login);
         void UpdateLogin(Login login);
         void DeleteLogin(int loginId);
+
+        Login Auth(Login login);
     }
 
 }

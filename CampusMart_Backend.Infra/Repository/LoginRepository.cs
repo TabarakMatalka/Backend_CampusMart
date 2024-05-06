@@ -62,5 +62,15 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("login_Id", loginId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Login_Package.DeleteLogin", p, commandType: CommandType.StoredProcedure);
         }
+        public Login Auth(Login login)
+        {
+            var p = new DynamicParameters();
+            p.Add("User_NAME", login.Username, DbType.String, ParameterDirection.Input);
+            p.Add("PASS", login.Password, DbType.String, ParameterDirection.Input);
+
+            Login result = dbContext.Connection.QueryFirstOrDefault<Login>("Login_Package.User_Login", p, commandType: CommandType.StoredProcedure);
+
+            return result;
+        }
     }
 }

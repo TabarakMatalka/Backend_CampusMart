@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusMart_Backend.API", "CampusMart_Backend.API\CampusMart_Backend.API.csproj", "{8A58E2F4-2D49-4B9D-965D-8DB64F226D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CampusMart_Backend.API", "CampusMart_Backend.API\CampusMart_Backend.API.csproj", "{8A58E2F4-2D49-4B9D-965D-8DB64F226D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusMart_Backend.Core", "CampusMart_Backend.Core\CampusMart_Backend.Core.csproj", "{B7A6EC86-DFA4-4852-98B4-93D1CC8F7DE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CampusMart_Backend.Core", "CampusMart_Backend.Core\CampusMart_Backend.Core.csproj", "{B7A6EC86-DFA4-4852-98B4-93D1CC8F7DE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusMart_Backend.Infra", "CampusMart_Backend.Infra\CampusMart_Backend.Infra.csproj", "{D94EC04F-CCAE-4C7F-9409-D6CD9FBDC817}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CampusMart_Backend.Infra", "CampusMart_Backend.Infra\CampusMart_Backend.Infra.csproj", "{D94EC04F-CCAE-4C7F-9409-D6CD9FBDC817}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

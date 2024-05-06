@@ -50,5 +50,19 @@ namespace CampusMart_Backend.API.Controllers
         {
             loginService.DeleteLogin(id);
         }
+        [HttpPost]
+        [Route("Auth")]
+        public IActionResult Auth([FromBody] Login login)
+        {
+            var token = loginService.Auth(login);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                return Ok(token);
+            }
+        }
     }
 }
