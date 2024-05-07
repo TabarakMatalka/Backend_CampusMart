@@ -4,11 +4,14 @@ using CampusMart_Backend.Core.Service;
 using CampusMart_Backend.Infra.Common;
 using CampusMart_Backend.Infra.Repository;
 using CampusMart_Backend.Infra.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -60,6 +63,25 @@ builder.Services.AddScoped<IHomePageService, HomePageService>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 
+builder.Services.AddAuthentication(opt => {
+opt.DefaultAuthenticateScheme =
+JwtBearerDefaults.AuthenticationScheme;
+opt.DefaultChallengeScheme =
+JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+options.TokenValidationParameters = new
+TokenValidationParameters
+{
+    ValidateIssuer = true,
+    ValidateAudience = true,
+    ValidateLifetime = true,
+    ValidateIssuerSigningKey = true,
+    IssuerSigningKey = new
+SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+};
+});
 // CORS Configuration
 builder.Services.AddCors(options =>
 {
@@ -83,6 +105,7 @@ app.UseHttpsRedirection();
 app.UseCors("AllowOrigin"); // Enable CORS
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 
