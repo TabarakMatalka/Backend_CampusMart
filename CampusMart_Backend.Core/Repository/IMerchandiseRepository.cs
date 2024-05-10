@@ -17,5 +17,7 @@ namespace CampusMart_Backend.Core.Repository
 
         List<Merchandise> GetAllPendingMerchandise();
         void UpdateMerchandiseRequestStatus(int merchandiseId, string newStatus);
+
+        List<Merchandise> GetMerchandiseInfoByStoreID(int storeId);
     }
 }

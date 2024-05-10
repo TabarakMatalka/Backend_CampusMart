@@ -94,6 +94,12 @@ namespace CampusMart_Backend.Infra.Repository
             dbContext.Connection.Execute("Store_Package.UpdateStoreApprovalStatus", p, commandType: CommandType.StoredProcedure);
         }
 
-
+        public Store GetStoreInfoByProviderID(int providerId)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_ProviderID", providerId, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.QueryFirstOrDefault <Store>("GetStoreInfoByProviderID", p, commandType: CommandType.StoredProcedure);
+            return result;
+        }
     }
 }

@@ -74,5 +74,11 @@ namespace CampusMart_Backend.API.Controllers
             storeService.UpdateStoreApprovalStatus(storeId, newStatus);
         }
 
+        [HttpGet]
+        [Route("GetStoreInfoByProviderID")]
+        public Store GetStoreInfoByProviderID(int providerId)
+        {
+            return this.storeService.GetStoreInfoByProviderID(providerId);
+        }
     }
 }

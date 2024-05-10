@@ -1,8 +1,10 @@
 ﻿using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.Repository;
 using CampusMart_Backend.Core.Service;
+using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +58,13 @@ namespace CampusMart_Backend.Infra.Service
         public void UpdateStoreApprovalStatus(int storeId, string newStatus)
         {
             this.storeRepository.UpdateStoreApprovalStatus(storeId, newStatus);
+        }
+
+
+        public Store GetStoreInfoByProviderID(int providerId)
+        {
+           
+            return this.storeRepository.GetStoreInfoByProviderID(providerId);
         }
 
     }

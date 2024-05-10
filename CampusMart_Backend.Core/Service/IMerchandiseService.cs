@@ -16,5 +16,7 @@ namespace CampusMart_Backend.Core.Service
         void DeleteMerchandise(int merchandiseId);
         List<Merchandise> GetAllPendingMerchandise();
         void UpdateMerchandiseRequestStatus(int merchandiseId, string newStatus);
+
+        List<Merchandise> GetMerchandiseInfoByStoreID(int storeId);
     }
 }

@@ -17,5 +17,8 @@ namespace CampusMart_Backend.Core.Service
         List<Store> GetAllStoresFromAllProviders();
         List<Store> GetAllPendingStores();
         void UpdateStoreApprovalStatus(int storeId, string newStatus);
+
+        Store GetStoreInfoByProviderID(int providerId);
+
     }
 }

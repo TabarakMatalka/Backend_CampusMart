@@ -67,6 +67,11 @@ namespace CampusMart_Backend.API.Controllers
             merchandiseService.UpdateMerchandiseRequestStatus(merchandiseId, newStatus);
         }
 
-
+        [HttpGet]
+        [Route(" GetMerchandiseInfoByStoreID")]
+        public List<Merchandise> GetMerchandiseInfoByStoreID(int storeId)
+        {
+            return this.merchandiseService.GetMerchandiseInfoByStoreID(storeId);
+        }
     }
 }

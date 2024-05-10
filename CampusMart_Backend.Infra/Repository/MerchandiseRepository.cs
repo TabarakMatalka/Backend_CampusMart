@@ -86,6 +86,13 @@ namespace CampusMart_Backend.Infra.Repository
             dbContext.Connection.Execute("Merchandise_Package.UpdateMerchandiseRequestStatus", p, commandType: CommandType.StoredProcedure);
         }
 
+        public List<Merchandise> GetMerchandiseInfoByStoreID(int storeId)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_StoreID", storeId, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.Query<Merchandise>("GetMerchandiseByStoreID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
 
     }
 

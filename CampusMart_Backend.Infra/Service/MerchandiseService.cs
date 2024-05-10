@@ -49,10 +49,15 @@ namespace CampusMart_Backend.Infra.Service
             return this.merchandiseRepository.GetAllPendingMerchandise();
         }
 
-
+     
         public void UpdateMerchandiseRequestStatus(int merchandiseId, string newStatus)
         {
             this.merchandiseRepository.UpdateMerchandiseRequestStatus(merchandiseId, newStatus);
+        }
+
+        public List<Merchandise> GetMerchandiseInfoByStoreID(int storeId)
+        {
+            return this.merchandiseRepository.GetMerchandiseInfoByStoreID(storeId);
         }
 
     }
