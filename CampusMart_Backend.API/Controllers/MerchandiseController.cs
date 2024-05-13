@@ -68,10 +68,36 @@ namespace CampusMart_Backend.API.Controllers
         }
 
         [HttpGet]
-        [Route(" GetMerchandiseInfoByStoreID")]
+        [Route("GetMerchandiseInfoByStoreID")]
         public List<Merchandise> GetMerchandiseInfoByStoreID(int storeId)
         {
             return this.merchandiseService.GetMerchandiseInfoByStoreID(storeId);
+        }
+
+
+        [Route("uploadMerchandiseImage")]
+        [HttpPost]
+        public IActionResult UploadImage()
+        {
+            var file = Request.Form.Files[0];
+
+            if (file != null && (file.ContentType == "image/jpeg" || file.ContentType == "image/jpg" || file.ContentType == "image/png"))
+            {
+                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var fullPath = Path.Combine("C:\\Users\\user\\Desktop\\GP\\github\\frontend\\CampusMart\\src\\assets\\img\\items\\merchandises", fileName);
+
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                Merchandise item = new Merchandise();
+                item.Image = fileName;
+                return Ok(item);
+            }
+            else
+            {
+                return BadRequest("Invalid file format. Please upload an image file.");
+            }
         }
     }
 }

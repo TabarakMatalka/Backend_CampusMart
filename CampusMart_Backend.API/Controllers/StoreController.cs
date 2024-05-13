@@ -80,5 +80,30 @@ namespace CampusMart_Backend.API.Controllers
         {
             return this.storeService.GetStoreInfoByProviderID(providerId);
         }
+
+        [Route("uploadStoreImage")]
+        [HttpPost]
+        public IActionResult UploadImage()
+        {
+            var file = Request.Form.Files[0];
+
+            if (file != null && (file.ContentType == "image/jpeg" || file.ContentType == "image/jpg" || file.ContentType == "image/png"))
+            {
+                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var fullPath = Path.Combine("C:\\Users\\user\\Desktop\\GP\\github\\frontend\\CampusMart\\src\\assets\\img\\shops", fileName);
+
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                Store item = new Store();
+                item.Image = fileName;
+                return Ok(item);
+            }
+            else
+            {
+                return BadRequest("Invalid file format. Please upload an image file.");
+            }
+        }
     }
 }
