@@ -1,4 +1,5 @@
 ﻿using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,13 @@ namespace CampusMart_Backend.API.Controllers
         public void DeleteCart(int id)
         {
             cartService.DeleteCart(id);
+        }
+
+        [HttpGet]
+        [Route("GetCartMerchandiseByConsumerID")]
+        public List<ConsumerCart> GetCartMerchandiseByConsumerID(int consumerId)
+        {
+            return this.cartService.GetCartMerchandiseByConsumerID(consumerId);
         }
     }
 }

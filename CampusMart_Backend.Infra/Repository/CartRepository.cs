@@ -1,5 +1,6 @@
 ﻿using CampusMart_Backend.Core.Common;
 using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
 using System;
@@ -64,6 +65,14 @@ namespace CampusMart_Backend.Infra.Repository
             var p = new DynamicParameters();
             p.Add("p_CartID", cartId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Cart_Package.DeleteCart", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public List <ConsumerCart> GetCartMerchandiseByConsumerID(int consumerId)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_ConsumerID", consumerId, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.Query<ConsumerCart>("GetCartMerchandiseByConsumerID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
     }
 }

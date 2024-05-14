@@ -1,4 +1,5 @@
 ﻿using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Repository;
 using CampusMart_Backend.Core.Service;
 using System;
@@ -41,6 +42,11 @@ namespace CampusMart_Backend.Infra.Service
         public void UpdateCart(Cart cart)
         {
             this.cartRepository.UpdateCart(cart);
+        }
+
+        public List<ConsumerCart> GetCartMerchandiseByConsumerID(int consumerId)
+        {
+            return this.cartRepository.GetCartMerchandiseByConsumerID(consumerId);
         }
     }
 
