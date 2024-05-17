@@ -16,5 +16,6 @@ namespace CampusMart_Backend.Core.Service
         void UpdateCart(Cart cart);
         void DeleteCart(int cartId);
         List<ConsumerCart> GetCartMerchandiseByConsumerID(int consumerId);
+        List<ConsumerCart> GetMerchandiseInCartByStoreID(int storeid, int consumerId);
     }
 }

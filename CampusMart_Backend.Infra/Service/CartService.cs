@@ -48,6 +48,11 @@ namespace CampusMart_Backend.Infra.Service
         {
             return this.cartRepository.GetCartMerchandiseByConsumerID(consumerId);
         }
+
+        public List<ConsumerCart> GetMerchandiseInCartByStoreID(int storeid, int consumerId)
+        {
+            return this.cartRepository.GetMerchandiseInCartByStoreID( storeid,  consumerId);
+        }
     }
 
 }

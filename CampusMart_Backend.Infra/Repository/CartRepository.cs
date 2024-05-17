@@ -74,5 +74,14 @@ namespace CampusMart_Backend.Infra.Repository
             var result = dbContext.Connection.Query<ConsumerCart>("GetCartMerchandiseByConsumerID", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+        public List<ConsumerCart> GetMerchandiseInCartByStoreID(int storeid, int consumerId)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_StoreID", storeid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_ConsumerID", consumerId, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.Query<ConsumerCart>("GetMerchandiseInCartByStoreID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

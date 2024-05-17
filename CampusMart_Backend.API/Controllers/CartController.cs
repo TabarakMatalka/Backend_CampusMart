@@ -1,8 +1,10 @@
 ﻿using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Service;
+using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace CampusMart_Backend.API.Controllers
 {
@@ -57,6 +59,13 @@ namespace CampusMart_Backend.API.Controllers
         public List<ConsumerCart> GetCartMerchandiseByConsumerID(int consumerId)
         {
             return this.cartService.GetCartMerchandiseByConsumerID(consumerId);
+        }
+
+        [HttpGet]
+        [Route("GetMerchandiseInCartByStoreID")]
+        public List<ConsumerCart> GetMerchandiseInCartByStoreID(int storeid, int consumerId)
+        {
+            return this.cartService.GetMerchandiseInCartByStoreID(storeid, consumerId);
         }
     }
 }

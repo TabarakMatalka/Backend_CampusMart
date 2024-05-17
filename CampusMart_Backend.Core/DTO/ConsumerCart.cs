@@ -16,5 +16,6 @@ namespace CampusMart_Backend.Core.DTO
         public decimal ProductID { get; set; }
         public decimal Quantity { get; set; }
         public decimal Total { get; set; }
+       
     }
 }
