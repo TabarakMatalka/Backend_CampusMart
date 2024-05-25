@@ -1,4 +1,5 @@
 ﻿using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace CampusMart_Backend.Core.Service
         List<Campusserviceprovider> GetAllPendingServiceProviders();
         void AcceptServiceProvider(int consumerId, int providerId);
         void RejectServiceProvider(int consumerId, int providerId);
+        ProviderStoreInfo GetProviderStoreInfoByConsumerID(int consumerId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿//using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace CampusMart_Backend.Core.Repository
         void CreateOrder(Order order);
         void UpdateOrder(Order order);
         void DeleteOrder(int orderId);
+
     }
 
 }

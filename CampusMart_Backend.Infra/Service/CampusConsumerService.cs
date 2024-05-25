@@ -55,7 +55,10 @@ namespace CampusMart_Backend.Infra.Service
           
             return this.campusConsumerRepository.GetConsumerByEmail(email);
         }
-
+        public decimal GetisProviderByConsumerID(int consumerId)
+        {
+            return this.GetisProviderByConsumerID((int)consumerId);
+        }
     }
 
 }

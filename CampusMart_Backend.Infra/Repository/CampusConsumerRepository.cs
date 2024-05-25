@@ -108,7 +108,17 @@ namespace CampusMart_Backend.Infra.Repository
 
             return result;
         }
+        public decimal GetisProviderByConsumerID(int consumerId)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_ConsumerID", consumerId, DbType.String, ParameterDirection.Input);
+            //Campusconsumer campusConsumer = new Campusconsumer();
+            //decimal isProvider;
+            var result  = dbContext.Connection.QueryFirstOrDefault<int>("GetisProviderByConsumerID", p, commandType: CommandType.StoredProcedure);
 
+
+            return result;
+        }
     }
 
 }

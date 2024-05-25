@@ -17,8 +17,8 @@ namespace CampusMart_Backend.Core.Data
         public string? Orderstatus { get; set; }
         public decimal? Totalamount { get; set; }
         public string? Location { get; set; }
-        public string? LocationLatitude { get; set; }
-        public string? LocationLongitude { get; set; }
+        public string? LOCATION_LATITUDE { get; set; }
+        public string? LOCATION_LONGITUDE { get; set; }
         public string? Deliveryaddress { get; set; }
         public DateTime? Orderdate { get; set; }
         public decimal? Consumerid { get; set; }

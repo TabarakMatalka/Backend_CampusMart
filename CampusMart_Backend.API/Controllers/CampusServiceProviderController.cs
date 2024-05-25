@@ -1,4 +1,5 @@
 ﻿using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -70,6 +71,12 @@ namespace CampusMart_Backend.API.Controllers
         public void RejectServiceProvider(int consumerId, int providerId)
         {
             campusServiceProviderService.RejectServiceProvider(consumerId, providerId);
+        }
+        [HttpGet]
+        [Route("GetProviderStoreInfoByConsumerID")]
+        public ProviderStoreInfo GetProviderStoreInfoByConsumerID(int consumerId)
+        {
+            return campusServiceProviderService.GetProviderStoreInfoByConsumerID(consumerId);
         }
     }
 }

@@ -91,6 +91,14 @@ namespace CampusMart_Backend.API.Controllers
         {
             return this.campusConsumerService.GetConsumerByEmail(email);
         }
+
+        [Route("GetisProviderByConsumerID")]
+        [HttpGet]
+        public decimal GetisProviderByConsumerID(int consumerId)
+        {
+            
+            return this.campusConsumerService.GetisProviderByConsumerID(consumerId);
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using CampusMart_Backend.Core.Common;
 using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
 using System;
@@ -20,9 +21,16 @@ namespace CampusMart_Backend.Infra.Repository
             this.dbContext = _dbContext;
         }
 
+     /*   public List<Order> GetAllOrders()
+        {
+
+            IEnumerable<Order> result = dbContext.Connection.Query<Order>("Orders_Package.GetAllOrders", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }*/
+
         public List<Order> GetAllOrders()
         {
-            IEnumerable<Order> result = dbContext.Connection.Query<Order>("Orders_Package.GetAllOrders", commandType: CommandType.StoredProcedure);
+            IEnumerable<Order> result = dbContext.Connection.Query<Order>("GetAllOrders", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -41,8 +49,8 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("p_OrderStatus", order.Orderstatus, DbType.String, ParameterDirection.Input);
             p.Add("p_TotalAmount", order.Totalamount, DbType.Decimal, ParameterDirection.Input);
             p.Add("p_Location", order.Location, DbType.String, ParameterDirection.Input);
-            p.Add("p_LOCATION_LATITUDE", order.LocationLatitude, DbType.String, ParameterDirection.Input);
-            p.Add("p_LOCATION_LONGITUDE", order.LocationLongitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LATITUDE", order.LOCATION_LATITUDE, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LONGITUDE", order.LOCATION_LONGITUDE, DbType.String, ParameterDirection.Input);
             p.Add("p_DeliveryAddress", order.Deliveryaddress, DbType.String, ParameterDirection.Input);
             p.Add("p_OrderDate", order.Orderdate, DbType.DateTime, ParameterDirection.Input);
             p.Add("p_ConsumerID", order.Consumerid, DbType.Int32, ParameterDirection.Input);
@@ -60,8 +68,8 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("p_OrderStatus", order.Orderstatus, DbType.String, ParameterDirection.Input);
             p.Add("p_TotalAmount", order.Totalamount, DbType.Decimal, ParameterDirection.Input);
             p.Add("p_Location", order.Location, DbType.String, ParameterDirection.Input);
-            p.Add("p_LOCATION_LATITUDE", order.LocationLatitude, DbType.String, ParameterDirection.Input);
-            p.Add("p_LOCATION_LONGITUDE", order.LocationLongitude, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LATITUDE", order.LOCATION_LATITUDE, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LONGITUDE", order.LOCATION_LONGITUDE, DbType.String, ParameterDirection.Input);
             p.Add("p_DeliveryAddress", order.Deliveryaddress, DbType.String, ParameterDirection.Input);
             p.Add("p_OrderDate", order.Orderdate, DbType.DateTime, ParameterDirection.Input);
             p.Add("p_ConsumerID", order.Consumerid, DbType.Int32, ParameterDirection.Input);
@@ -77,6 +85,8 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("p_OrderID", orderId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Orders_Package.DeleteOrder", p, commandType: CommandType.StoredProcedure);
         }
+
+       
     }
 
 

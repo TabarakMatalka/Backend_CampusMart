@@ -1,4 +1,5 @@
 ﻿using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Repository;
 using CampusMart_Backend.Core.Service;
 using System;
@@ -55,6 +56,11 @@ namespace CampusMart_Backend.Infra.Service
         public void RejectServiceProvider(int consumerId, int providerId)
         {
             this.campusServiceProviderRepository.RejectServiceProvider(consumerId, providerId);
+        }
+
+        public ProviderStoreInfo GetProviderStoreInfoByConsumerID(int consumerId)
+        {
+            return this.campusServiceProviderRepository.GetProviderStoreInfoByConsumerID(consumerId);
         }
     }
 

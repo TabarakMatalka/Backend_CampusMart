@@ -1,5 +1,6 @@
 ﻿using CampusMart_Backend.Core.Common;
 using CampusMart_Backend.Core.Data;
+using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
 using System;
@@ -101,6 +102,15 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("p_ConsumerID", consumerId, DbType.Int32, ParameterDirection.Input);
             p.Add("p_ProviderID", providerId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("RejectServiceProvider", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public ProviderStoreInfo GetProviderStoreInfoByConsumerID(int consumerId)
+        {
+
+            var p = new DynamicParameters();
+            p.Add("p_ConsumerID", consumerId, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.QueryFirstOrDefault<ProviderStoreInfo>("GetProviderStoreInfoByConsumerID", p, commandType: CommandType.StoredProcedure);
+            return result;
         }
     }
 }
