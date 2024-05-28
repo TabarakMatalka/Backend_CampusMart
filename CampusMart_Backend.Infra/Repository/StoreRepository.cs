@@ -59,7 +59,7 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("image_param", store.Image, DbType.String, ParameterDirection.Input);
             p.Add("provider_id_param", store.Providerid, DbType.Int32, ParameterDirection.Input);
             p.Add("description_param", store.Description, DbType.String, ParameterDirection.Input); // Adding description parameter
-            dbContext.Connection.Execute("Store_Package.Update_Store", p, commandType: CommandType.StoredProcedure);
+            dbContext.Connection.Execute("Store_Package.UpdateStore", p, commandType: CommandType.StoredProcedure);
         }
 
 
