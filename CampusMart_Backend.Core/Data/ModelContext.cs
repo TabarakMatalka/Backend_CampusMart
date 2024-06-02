@@ -250,12 +250,12 @@ namespace CampusMart_Backend.Core.Data
                     .HasColumnType("NUMBER")
                     .HasColumnName("CONSUMERID");
 
-                entity.Property(e => e.LocationLatitude)
+                entity.Property(e => e.LOCATION_LATITUDE)
                     .HasMaxLength(1000)
                     .IsUnicode(false)
                     .HasColumnName("LOCATION_LATITUDE");
 
-                entity.Property(e => e.LocationLongitude)
+                entity.Property(e => e.LOCATION_LONGITUDE)
                     .HasMaxLength(1000)
                     .IsUnicode(false)
                     .HasColumnName("LOCATION_LONGITUDE");

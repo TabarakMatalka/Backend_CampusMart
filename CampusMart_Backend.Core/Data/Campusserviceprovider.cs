@@ -14,8 +14,8 @@ namespace CampusMart_Backend.Core.Data
 
         public decimal Providerid { get; set; }
         public string? Phone { get; set; }
-        public string? LocationLatitude { get; set; }
-        public string? LocationLongitude { get; set; }
+        public string? LOCATION_LATITUDE { get; set; }
+        public string? LOCATION_LONGITUDE { get; set; }
         public decimal? Consumerid { get; set; }
         public string? Motivation { get; set; }
         public string? Status { get; set; }

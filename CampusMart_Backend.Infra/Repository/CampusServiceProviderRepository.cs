@@ -41,8 +41,8 @@ namespace CampusMart_Backend.Infra.Repository
             {
                 var p = new DynamicParameters();
                 p.Add("p_Phone", serviceProvider.Phone, DbType.String, ParameterDirection.Input);
-                p.Add("p_LOCATION_LATITUDE", serviceProvider.LocationLatitude, DbType.String, ParameterDirection.Input);
-                p.Add("p_LOCATION_LONGITUDE", serviceProvider.LocationLongitude, DbType.String, ParameterDirection.Input);
+                p.Add("p_LOCATION_LATITUDE", serviceProvider.LOCATION_LATITUDE, DbType.String, ParameterDirection.Input);
+                p.Add("p_LOCATION_LONGITUDE", serviceProvider.LOCATION_LONGITUDE, DbType.String, ParameterDirection.Input);
                 p.Add("c_ConsumerID", serviceProvider.Consumerid, DbType.Int32, ParameterDirection.Input);
                 p.Add("p_Motivation", serviceProvider.Motivation, DbType.String, ParameterDirection.Input);
                 p.Add("p_Status", serviceProvider.Status, DbType.String, ParameterDirection.Input);
@@ -67,9 +67,9 @@ namespace CampusMart_Backend.Infra.Repository
      var p = new DynamicParameters();
      p.Add("p_ProviderID", serviceProvider.Providerid, DbType.Int32, ParameterDirection.Input);
      p.Add("p_Phone", serviceProvider.Phone, DbType.String, ParameterDirection.Input);
-     p.Add("p_LOCATION_LATITUDE", serviceProvider.LocationLatitude, DbType.String, ParameterDirection.Input);
-     p.Add("p_LOCATION_LONGITUDE", serviceProvider.LocationLongitude, DbType.String, ParameterDirection.Input);
-     p.Add("c_ConsumerID", serviceProvider.Consumerid, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_LOCATION_LATITUDE", serviceProvider.LOCATION_LATITUDE, DbType.String, ParameterDirection.Input);
+            p.Add("p_LOCATION_LONGITUDE", serviceProvider.LOCATION_LONGITUDE, DbType.String, ParameterDirection.Input);
+            p.Add("c_ConsumerID", serviceProvider.Consumerid, DbType.Int32, ParameterDirection.Input);
      p.Add("p_Motivation", serviceProvider.Motivation, DbType.String, ParameterDirection.Input); // Assuming Motivation is a property in CampusServiceProvider
      p.Add("p_Status", serviceProvider.Status, DbType.String, ParameterDirection.Input); // Assuming Status is a property in CampusServiceProvider
      dbContext.Connection.Execute("CampusServiceProvider_Package.UpdateServiceProvider", p, commandType: CommandType.StoredProcedure);
