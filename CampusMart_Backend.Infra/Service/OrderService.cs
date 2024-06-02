@@ -44,6 +44,13 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.orderRepository.UpdateOrder(order);
         }
-        
+        public List<ConsumersOrders> GetConsumerOrdersbyProviderId(int providerID)
+        {
+            return this.orderRepository.GetConsumerOrdersbyProviderId(providerID);
+        }
+        public void AcceptOrder(int orderID)
+        {
+            this.orderRepository.AcceptOrder(orderID);
+        }
     }
 }

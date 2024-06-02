@@ -2,6 +2,7 @@
 using CampusMart_Backend.Core.Repository;
 using CampusMart_Backend.Core.Service;
 using Dapper;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -66,6 +67,12 @@ namespace CampusMart_Backend.Infra.Service
            
             return this.storeRepository.GetStoreInfoByProviderID(providerId);
         }
+
+        public List<string> GetAllCategoriesByStoreID(int storeID)
+        {
+            return this.storeRepository.GetAllCategoriesByStoreID(storeID);
+        }
+
 
     }
 }

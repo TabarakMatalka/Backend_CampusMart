@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CampusMart_Backend.Infra.Repository
 {
@@ -100,6 +101,23 @@ namespace CampusMart_Backend.Infra.Repository
             p.Add("p_ProviderID", providerId, DbType.Int32, ParameterDirection.Input);
             var result = dbContext.Connection.QueryFirstOrDefault <Store>("GetStoreInfoByProviderID", p, commandType: CommandType.StoredProcedure);
             return result;
+        }
+
+        public List<string> GetAllCategoriesByStoreID(int storeID)
+        {
+
+            
+                var p = new DynamicParameters();
+                p.Add("p_storeID", storeID, DbType.Int32, ParameterDirection.Input);
+
+                var result = dbContext.Connection.Query<string>(
+                    "GetAllCategoriesByStoreID",
+                    p,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            
         }
     }
 }

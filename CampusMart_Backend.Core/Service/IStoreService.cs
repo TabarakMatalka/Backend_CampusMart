@@ -20,5 +20,8 @@ namespace CampusMart_Backend.Core.Service
 
         Store GetStoreInfoByProviderID(int providerId);
 
+        List<string> GetAllCategoriesByStoreID(int storeID);
+
+
     }
 }

@@ -3,12 +3,14 @@ using CampusMart_Backend.Core.Data;
 using CampusMart_Backend.Core.DTO;
 using CampusMart_Backend.Core.Repository;
 using Dapper;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CampusMart_Backend.Infra.Repository
 {
@@ -30,7 +32,7 @@ namespace CampusMart_Backend.Infra.Repository
 
         public List<Order> GetAllOrders()
         {
-            IEnumerable<Order> result = dbContext.Connection.Query<Order>("GetAllOrders", commandType: CommandType.StoredProcedure);
+            IEnumerable<Order> result = dbContext.Connection.Query<Order>("Orders_Package.GetAllOrders", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -86,7 +88,30 @@ namespace CampusMart_Backend.Infra.Repository
             dbContext.Connection.Execute("Orders_Package.DeleteOrder", p, commandType: CommandType.StoredProcedure);
         }
 
-       
+       public List <ConsumersOrders> GetConsumerOrdersbyProviderId(int providerID){
+
+
+            var p = new DynamicParameters();
+            p.Add("p_providerID", providerID, DbType.Int32, ParameterDirection.Input);
+
+            var result = dbContext.Connection.Query<ConsumersOrders>(
+                "GetConsumerOrdersbyProviderId",
+                p,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return result.ToList();
+        }
+
+        public void AcceptOrder(int orderID)
+        {
+                var p = new DynamicParameters();
+                p.Add("p_orderID", orderID, DbType.Int32, ParameterDirection.Input);
+
+            dbContext.Connection.Execute("AcceptOrder", p, commandType: CommandType.StoredProcedure);
+           
+        }
+
     }
 
 

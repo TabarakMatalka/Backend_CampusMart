@@ -52,6 +52,17 @@ namespace CampusMart_Backend.API.Controllers
             orderService.DeleteOrder(id);
         }
 
-      
+        [HttpGet]
+        [Route("GetConsumerOrdersbyProviderId")]
+        public List<ConsumersOrders> GetConsumerOrdersbyProviderId(int providerID)
+        {
+            return this.orderService.GetConsumerOrdersbyProviderId(providerID);
+        }
+        [HttpPut]
+        [Route("AcceptOrder")]
+        public void AcceptOrder(int orderID)
+        {
+            this.orderService.AcceptOrder(orderID);
+        }
     }
 }

@@ -105,5 +105,12 @@ namespace CampusMart_Backend.API.Controllers
                 return BadRequest("Invalid file format. Please upload an image file.");
             }
         }
+
+        [HttpGet]
+        [Route("GetAllCategoriesByStoreID")]
+        public List<string> GetAllCategoriesByStoreID(int storeID)
+        {
+            return this.storeService.GetAllCategoriesByStoreID(storeID);
+        }
     }
 }

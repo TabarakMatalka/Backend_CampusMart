@@ -15,5 +15,10 @@ namespace CampusMart_Backend.Core.Service
         void CreateOrder(Order order);
         void UpdateOrder(Order order);
         void DeleteOrder(int orderID);
+
+        List<ConsumersOrders> GetConsumerOrdersbyProviderId(int providerID);
+
+        public void AcceptOrder(int orderID);
+
     }
 }
