@@ -29,7 +29,7 @@ namespace CampusMart_Backend.Infra.Repository
         public Bank GetBankById(int bankId)
         {
             var p = new DynamicParameters();
-            p.Add("BankID_param", bankId, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_BankID", bankId, DbType.Int32, ParameterDirection.Input);
             var result = dbContext.Connection.QueryFirstOrDefault<Bank>("Bank_Package.GetBankById", p, commandType: CommandType.StoredProcedure);
             return result;
         }
@@ -68,6 +68,13 @@ namespace CampusMart_Backend.Infra.Repository
             var p = new DynamicParameters();
             p.Add("p_BankID", bankId, DbType.Int32, ParameterDirection.Input);
             dbContext.Connection.Execute("Bank_Package.DeleteBank", p, commandType: CommandType.StoredProcedure);
+        }
+        public Bank GetBankByConsumerId(int consumerId)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_ConsumerID", consumerId, DbType.Int32, ParameterDirection.Input);
+            var result = dbContext.Connection.QueryFirstOrDefault<Bank>("GetBankByConsumerID", p, commandType: CommandType.StoredProcedure);
+            return result;
         }
     }
 }

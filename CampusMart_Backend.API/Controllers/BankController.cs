@@ -50,5 +50,12 @@ namespace CampusMart_Backend.API.Controllers
         {
             bankService.DeleteBank(id);
         }
+
+        [HttpGet]
+        [Route("GetBankByConsumerId")]
+        public Bank GetBankByConsumerId(int consumerId)
+        {
+            return this.bankService.GetBankByConsumerId(consumerId);
+        }
     }
 }

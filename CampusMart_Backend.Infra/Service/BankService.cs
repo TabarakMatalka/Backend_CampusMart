@@ -42,6 +42,11 @@ namespace CampusMart_Backend.Infra.Service
         {
             this.bankRepository.UpdateBank(bank);
         }
+
+        public Bank GetBankByConsumerId(int consumerId)
+        {
+            return this.bankRepository.GetBankByConsumerId(consumerId);
+        }
     }
 
 }

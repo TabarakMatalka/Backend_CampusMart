@@ -14,6 +14,7 @@ namespace CampusMart_Backend.Core.Service
         void CreateBank(Bank bank);
         void UpdateBank(Bank bank);
         void DeleteBank(int bankId);
+        public Bank GetBankByConsumerId(int consumerId);
     }
 
 }
